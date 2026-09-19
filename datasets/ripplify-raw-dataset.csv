@@ -1,0 +1,311 @@
+Sample_ID,Sample_Name,Reading_Index,pH,pH_Level,TDS_mgL,TDS_Level,EC_uScm,EC_Level,Temp_C,Temp_Level,Turbidity_NTU,Turbidity_Level,Overall_Suitability_Level
+1,Water 1 - 2 Days Old Water,1,9.49,1,52.3,2,147.5,2,25.18,3,11.4,3,3
+1,Water 1 - 2 Days Old Water,2,9.42,1,58.1,2,152.3,3,26.56,3,7.8,4,4
+1,Water 1 - 2 Days Old Water,3,9.45,1,54.6,2,148.5,2,29.74,3,12.4,3,3
+1,Water 1 - 2 Days Old Water,4,9.46,1,61.2,2,150.7,3,25.61,3,13.9,3,3
+1,Water 1 - 2 Days Old Water,5,9.57,1,55.8,2,150.9,3,25.21,3,9.2,4,4
+1,Water 1 - 2 Days Old Water,6,9.51,1,63.4,2,150.4,3,28.54,3,7.2,4,4
+1,Water 1 - 2 Days Old Water,7,9.52,1,57.9,2,152.0,3,26.39,3,5.3,4,4
+1,Water 1 - 2 Days Old Water,8,9.48,1,60.5,2,153.0,3,28.81,3,11.5,3,3
+1,Water 1 - 2 Days Old Water,9,9.44,1,56.7,2,151.9,3,29.12,3,7.2,4,4
+1,Water 1 - 2 Days Old Water,10,9.4,1,59.3,2,150.0,3,25.05,3,13.1,3,3
+2,Water 2 - Refrigerated Muddy Water,1,5.44,1,37.6,1,76.11,1,18.62,1,68.64,1,1
+2,Water 2 - Refrigerated Muddy Water,2,5.35,1,39.98,1,87.74,1,19.35,1,71.14,1,1
+2,Water 2 - Refrigerated Muddy Water,3,5.49,1,40.48,1,86.1,1,18.54,1,70.63,1,1
+2,Water 2 - Refrigerated Muddy Water,4,5.42,1,40.05,1,87.69,1,18.38,1,67.25,1,1
+2,Water 2 - Refrigerated Muddy Water,5,5.71,1,39.4,1,93.78,1,19.32,1,68.84,1,1
+2,Water 2 - Refrigerated Muddy Water,6,5.48,1,40.23,1,78.2,1,18.02,1,60.85,1,1
+2,Water 2 - Refrigerated Muddy Water,7,5.79,1,41.95,1,82.63,1,20.25,1,66.48,1,1
+2,Water 2 - Refrigerated Muddy Water,8,5.79,1,39.65,1,76.96,1,20.3,1,60.25,1,1
+2,Water 2 - Refrigerated Muddy Water,9,5.68,1,42.74,1,94.61,1,20.36,1,67.24,1,1
+2,Water 2 - Refrigerated Muddy Water,10,5.22,1,35.3,1,82.9,1,20.05,1,59.14,1,1
+3,Water 3 - Cold Water with Soil Suspension,1,5.67,1,38.95,1,85.58,1,19.01,1,57.28,1,1
+3,Water 3 - Cold Water with Soil Suspension,2,5.71,1,40.21,1,94.17,1,19.14,1,55.38,1,1
+3,Water 3 - Cold Water with Soil Suspension,3,5.6,1,42.44,1,93.75,1,19.88,1,63.12,1,1
+3,Water 3 - Cold Water with Soil Suspension,4,5.87,1,39.44,1,95.55,1,20.5,1,63.96,1,1
+3,Water 3 - Cold Water with Soil Suspension,5,5.74,1,42.49,1,81.74,1,19.36,1,54.79,1,1
+3,Water 3 - Cold Water with Soil Suspension,6,5.57,1,39.6,1,83.74,1,20.4,1,64.33,1,1
+3,Water 3 - Cold Water with Soil Suspension,7,5.82,1,47.31,1,82.11,1,21.06,1,54.98,1,1
+3,Water 3 - Cold Water with Soil Suspension,8,5.53,1,41.16,1,90.54,1,19.12,1,55.46,1,1
+3,Water 3 - Cold Water with Soil Suspension,9,5.66,1,47.05,1,87.19,1,20.04,1,57.94,1,1
+3,Water 3 - Cold Water with Soil Suspension,10,5.54,1,47.68,1,96.61,1,20.8,1,58.38,1,1
+4,Water 4 - Lightly Turbid Cool Water,1,6.46,2,83.03,2,131.17,2,23.81,2,30.08,2,2
+4,Water 4 - Lightly Turbid Cool Water,2,6.8,2,119.87,2,113.74,2,24.12,2,39.53,2,2
+4,Water 4 - Lightly Turbid Cool Water,3,6.3,2,81.67,2,135.06,2,22.66,2,33.38,2,2
+4,Water 4 - Lightly Turbid Cool Water,4,6.87,2,78.06,2,125.13,2,24.31,2,44.74,2,2
+4,Water 4 - Lightly Turbid Cool Water,5,6.73,2,102.99,2,142.19,2,23.01,2,44.92,2,2
+4,Water 4 - Lightly Turbid Cool Water,6,6.43,2,114.24,2,129.44,2,23.06,2,39.63,2,2
+4,Water 4 - Lightly Turbid Cool Water,7,6.58,2,143.86,2,131.67,2,23.38,2,31.88,2,2
+4,Water 4 - Lightly Turbid Cool Water,8,6.81,2,86.08,2,131.68,2,23.89,2,47.08,2,2
+4,Water 4 - Lightly Turbid Cool Water,9,6.25,2,114.85,2,111.87,2,23.78,2,39.09,2,2
+4,Water 4 - Lightly Turbid Cool Water,10,6.69,2,132.96,2,114.25,2,24.22,2,30.98,2,2
+5,Water 5 - Slightly Acidic Water,1,8.67,1,89.9,2,135.9,2,26.84,3,5.4,4,4
+5,Water 5 - Slightly Acidic Water,2,8.59,1,81.7,2,141.8,2,31.28,3,5.5,4,4
+5,Water 5 - Slightly Acidic Water,3,8.51,1,82.0,2,139.7,2,26.54,3,4.4,4,4
+5,Water 5 - Slightly Acidic Water,4,8.44,4,81.7,2,140.7,2,28.57,3,8.0,4,4
+5,Water 5 - Slightly Acidic Water,5,8.43,4,82.0,2,141.4,2,25.33,3,2.5,4,4
+5,Water 5 - Slightly Acidic Water,6,8.36,4,82.2,2,142.8,2,29.39,3,2.7,4,4
+5,Water 5 - Slightly Acidic Water,7,8.34,4,81.5,2,140.1,2,27.96,3,6.8,4,4
+5,Water 5 - Slightly Acidic Water,8,8.29,4,81.8,2,141.9,2,27.67,3,2.4,4,4
+5,Water 5 - Slightly Acidic Water,9,8.25,4,81.4,2,142.5,2,28.7,3,8.0,4,4
+5,Water 5 - Slightly Acidic Water,10,8.25,4,81.7,2,144.2,2,31.03,3,7.8,4,4
+6,Water 6 - Water with Fabcon,1,9.52,1,308.1,4,402.3,4,28.76,3,7.7,4,4
+6,Water 6 - Water with Fabcon,2,10.46,1,216.7,3,365.2,4,28.18,3,14.5,3,4
+6,Water 6 - Water with Fabcon,3,10.81,1,239.5,3,375.1,4,26.25,3,14.1,3,4
+6,Water 6 - Water with Fabcon,4,10.81,1,244.8,3,395.8,4,29.26,3,6.5,4,4
+6,Water 6 - Water with Fabcon,5,10.64,1,280.9,4,416.8,4,28.71,3,5.0,4,4
+6,Water 6 - Water with Fabcon,6,9.99,1,202.9,3,439.4,4,31.15,3,13.3,3,4
+6,Water 6 - Water with Fabcon,7,9.96,1,208.7,3,431.7,4,31.63,3,5.9,4,4
+6,Water 6 - Water with Fabcon,8,10.23,1,210.4,3,414.1,4,30.36,3,6.3,4,4
+6,Water 6 - Water with Fabcon,9,10.21,1,282.5,4,339.8,4,31.11,3,9.2,4,4
+6,Water 6 - Water with Fabcon,10,9.82,1,280.9,4,409.5,4,26.41,3,8.1,4,4
+7,Water 7 - Water with Used Oil,1,7.5,4,165.0,3,193.8,3,33.55,4,33.6,2,4
+7,Water 7 - Water with Used Oil,2,6.72,2,133.8,2,208.8,3,32.69,4,36.6,2,4
+7,Water 7 - Water with Used Oil,3,6.57,2,163.1,3,172.9,3,34.72,4,55.8,1,4
+7,Water 7 - Water with Used Oil,4,6.57,2,123.8,2,216.9,3,32.64,4,34.0,2,4
+7,Water 7 - Water with Used Oil,5,7.44,3,157.1,3,197.3,3,34.35,4,54.2,1,4
+7,Water 7 - Water with Used Oil,6,6.69,2,109.7,2,193.1,3,33.27,4,44.0,2,4
+7,Water 7 - Water with Used Oil,7,7.23,3,167.3,3,248.4,4,32.3,4,42.1,2,4
+7,Water 7 - Water with Used Oil,8,6.84,2,186.2,3,174.9,3,32.57,4,43.5,2,4
+7,Water 7 - Water with Used Oil,9,6.92,2,127.9,2,175.0,3,34.77,4,43.3,2,4
+7,Water 7 - Water with Used Oil,10,7.36,3,155.0,3,155.1,3,35.0,4,55.1,1,4
+8,Water 8 - Water with Salt,1,7.97,4,392.6,4,434.9,4,26.16,3,4.9,4,4
+8,Water 8 - Water with Salt,2,7.21,3,340.1,4,355.9,4,27.65,3,7.9,4,4
+8,Water 8 - Water with Salt,3,7.27,3,378.4,4,395.5,4,27.96,3,7.7,4,4
+8,Water 8 - Water with Salt,4,8.0,4,355.6,4,421.8,4,26.08,3,3.8,4,4
+8,Water 8 - Water with Salt,5,7.97,4,357.9,4,404.2,4,30.24,3,2.3,4,4
+8,Water 8 - Water with Salt,6,7.58,4,350.3,4,435.3,4,26.1,3,7.8,4,4
+8,Water 8 - Water with Salt,7,7.08,3,318.6,4,409.5,4,29.73,3,3.4,4,4
+8,Water 8 - Water with Salt,8,7.12,3,389.0,4,374.6,4,29.16,3,5.7,4,4
+8,Water 8 - Water with Salt,9,7.42,3,358.4,4,402.3,4,31.54,3,3.2,4,4
+8,Water 8 - Water with Salt,10,7.72,4,323.9,4,389.6,4,29.7,3,3.8,4,4
+9,Water 9 - Water with Rock and Muds,1,6.82,2,275.2,4,210.9,3,28.21,3,79.9,1,4
+9,Water 9 - Water with Rock and Muds,2,7.5,4,207.3,3,232.0,4,26.86,3,77.3,1,4
+9,Water 9 - Water with Rock and Muds,3,7.38,3,287.9,4,255.4,4,26.1,3,73.3,1,4
+9,Water 9 - Water with Rock and Muds,4,7.2,3,261.2,4,348.1,4,29.58,3,40.3,2,4
+9,Water 9 - Water with Rock and Muds,5,7.32,3,229.9,3,299.5,4,31.57,3,45.4,2,4
+9,Water 9 - Water with Rock and Muds,6,6.62,2,210.7,3,283.0,4,26.91,3,64.2,1,4
+9,Water 9 - Water with Rock and Muds,7,7.22,3,220.4,3,295.1,4,26.85,3,59.5,1,4
+9,Water 9 - Water with Rock and Muds,8,7.41,3,284.6,4,213.8,3,27.97,3,51.1,1,4
+9,Water 9 - Water with Rock and Muds,9,6.5,2,277.1,4,295.6,4,26.83,3,69.6,1,4
+9,Water 9 - Water with Rock and Muds,10,7.05,3,242.8,3,201.5,3,25.53,3,75.3,1,3
+10,Water 10 - Water with Food Debris,1,6.9,2,304.6,4,350.2,4,33.75,4,23.0,2,4
+10,Water 10 - Water with Food Debris,2,6.13,2,280.8,4,357.9,4,34.39,4,37.2,2,4
+10,Water 10 - Water with Food Debris,3,6.9,2,271.0,4,279.9,4,32.31,4,35.6,2,4
+10,Water 10 - Water with Food Debris,4,6.88,2,290.6,4,324.5,4,32.46,4,38.6,2,4
+10,Water 10 - Water with Food Debris,5,6.86,2,347.6,4,347.3,4,34.64,4,20.5,3,4
+10,Water 10 - Water with Food Debris,6,6.74,2,283.2,4,361.7,4,34.41,4,37.3,2,4
+10,Water 10 - Water with Food Debris,7,6.81,2,276.7,4,344.5,4,32.32,4,37.4,2,4
+10,Water 10 - Water with Food Debris,8,6.86,2,272.2,4,348.0,4,33.38,4,26.1,2,4
+10,Water 10 - Water with Food Debris,9,6.8,2,272.8,4,252.8,4,32.58,4,26.6,2,4
+10,Water 10 - Water with Food Debris,10,6.86,2,346.7,4,283.5,4,33.92,4,28.0,2,4
+11,Water 11 - Rainwater,1,6.98,2,31.4,1,76.4,1,22.35,2,7.8,4,4
+11,Water 11 - Rainwater,2,6.18,2,48.5,1,35.9,1,22.33,2,4.6,4,4
+11,Water 11 - Rainwater,3,6.73,2,22.5,1,56.4,1,23.53,2,4.3,4,4
+11,Water 11 - Rainwater,4,6.58,2,20.2,1,62.5,1,22.01,2,7.6,4,4
+11,Water 11 - Rainwater,5,6.54,2,38.8,1,64.5,1,24.01,2,4.2,4,4
+11,Water 11 - Rainwater,6,6.07,2,36.6,1,39.8,1,22.94,2,7.1,4,4
+11,Water 11 - Rainwater,7,6.72,2,22.0,1,38.6,1,23.23,2,4.4,4,4
+11,Water 11 - Rainwater,8,6.3,2,15.1,1,45.2,1,24.82,2,6.1,4,4
+11,Water 11 - Rainwater,9,6.9,2,34.6,1,38.1,1,23.64,2,2.0,4,4
+11,Water 11 - Rainwater,10,6.29,2,27.2,1,54.8,1,23.96,2,4.8,4,4
+12,Water 12 - Water with Gargled Mouthwash,1,8.16,4,121.4,2,211.5,3,31.31,3,8.6,4,4
+12,Water 12 - Water with Gargled Mouthwash,2,7.75,4,108.5,2,217.0,3,29.43,3,5.3,4,4
+12,Water 12 - Water with Gargled Mouthwash,3,8.73,1,175.1,3,237.5,4,26.57,3,4.4,4,4
+12,Water 12 - Water with Gargled Mouthwash,4,7.54,4,124.5,2,211.8,3,30.95,3,3.5,4,4
+12,Water 12 - Water with Gargled Mouthwash,5,8.12,4,163.0,3,175.3,3,29.87,3,6.5,4,4
+12,Water 12 - Water with Gargled Mouthwash,6,7.87,4,165.6,3,150.7,3,30.26,3,8.4,4,4
+12,Water 12 - Water with Gargled Mouthwash,7,7.66,4,142.5,2,172.9,3,31.71,3,6.6,4,4
+12,Water 12 - Water with Gargled Mouthwash,8,7.58,4,124.9,2,260.3,4,28.2,3,8.6,4,4
+12,Water 12 - Water with Gargled Mouthwash,9,8.5,4,198.8,3,227.4,3,31.65,3,9.2,4,4
+12,Water 12 - Water with Gargled Mouthwash,10,8.42,4,171.9,3,215.6,3,30.81,3,6.8,4,4
+13,Water 13 - Water with Soda,1,4.79,1,124.4,2,127.5,2,18.78,1,3.5,4,4
+13,Water 13 - Water with Soda,2,4.28,1,126.6,2,132.1,2,19.88,1,3.6,4,4
+13,Water 13 - Water with Soda,3,3.15,1,78.6,2,107.2,2,18.96,1,5.2,4,4
+13,Water 13 - Water with Soda,4,3.28,1,73.1,2,149.4,2,20.12,1,2.4,4,4
+13,Water 13 - Water with Soda,5,3.82,1,104.3,2,121.6,2,18.62,1,4.5,4,4
+13,Water 13 - Water with Soda,6,4.81,1,108.4,2,149.6,2,20.57,1,6.6,4,4
+13,Water 13 - Water with Soda,7,3.76,1,50.6,2,115.2,2,20.26,1,7.1,4,4
+13,Water 13 - Water with Soda,8,4.91,1,91.9,2,154.8,3,19.64,1,5.6,4,4
+13,Water 13 - Water with Soda,9,3.44,1,71.9,2,123.6,2,18.09,1,4.0,4,4
+13,Water 13 - Water with Soda,10,4.36,1,90.4,2,96.5,1,19.4,1,2.8,4,4
+14,Water 14 - Water with Milk,1,6.81,2,204.0,3,301.2,4,28.95,3,15.5,3,4
+14,Water 14 - Water with Milk,2,6.82,2,220.4,3,310.0,4,25.35,3,22.6,2,4
+14,Water 14 - Water with Milk,3,6.61,2,249.0,3,349.0,4,27.65,3,30.0,2,4
+14,Water 14 - Water with Milk,4,6.92,2,237.8,3,260.6,4,25.14,3,25.8,2,4
+14,Water 14 - Water with Milk,5,7.0,3,252.5,4,334.5,4,30.47,3,28.0,2,4
+14,Water 14 - Water with Milk,6,6.88,2,342.4,4,275.9,4,25.14,3,18.0,3,4
+14,Water 14 - Water with Milk,7,6.56,2,300.4,4,323.3,4,26.53,3,29.0,2,4
+14,Water 14 - Water with Milk,8,6.88,2,225.2,3,328.9,4,30.24,3,17.3,3,4
+14,Water 14 - Water with Milk,9,6.91,2,344.7,4,264.1,4,25.18,3,21.2,2,4
+14,Water 14 - Water with Milk,10,6.84,2,343.7,4,301.6,4,30.01,3,16.5,3,4
+15,Water 15R - Moderately Turbid Warm Water,1,6.44,2,68.99,2,130.21,2,23.0,2,31.21,2,2
+15,Water 15R - Moderately Turbid Warm Water,2,6.6,2,119.8,2,116.36,2,24.49,2,33.88,2,2
+15,Water 15R - Moderately Turbid Warm Water,3,6.32,2,119.89,2,138.08,2,23.89,2,35.62,2,2
+15,Water 15R - Moderately Turbid Warm Water,4,6.57,2,110.54,2,139.07,2,24.46,2,29.01,2,2
+15,Water 15R - Moderately Turbid Warm Water,5,6.21,2,68.41,2,121.69,2,24.1,2,44.22,2,2
+15,Water 15R - Moderately Turbid Warm Water,6,6.45,2,89.54,2,131.17,2,24.8,2,36.76,2,2
+15,Water 15R - Moderately Turbid Warm Water,7,6.38,2,120.53,2,147.69,2,24.51,2,32.97,2,2
+15,Water 15R - Moderately Turbid Warm Water,8,6.3,2,96.87,2,114.88,2,23.25,2,33.93,2,2
+15,Water 15R - Moderately Turbid Warm Water,9,6.71,2,116.15,2,125.89,2,24.81,2,28.58,2,2
+15,Water 15R - Moderately Turbid Warm Water,10,6.35,2,81.89,2,131.76,2,24.69,2,32.65,2,2
+16,Water 16 - Water with Vinegar,1,2.63,1,122.0,2,138.6,2,30.31,3,6.1,4,4
+16,Water 16 - Water with Vinegar,2,3.47,1,99.1,2,175.2,3,25.65,3,3.3,4,4
+16,Water 16 - Water with Vinegar,3,3.54,1,80.6,2,149.8,2,28.31,3,5.2,4,4
+16,Water 16 - Water with Vinegar,4,3.14,1,124.6,2,119.7,2,29.92,3,3.6,4,4
+16,Water 16 - Water with Vinegar,5,2.88,1,62.1,2,103.1,2,25.84,3,5.2,4,4
+16,Water 16 - Water with Vinegar,6,3.64,1,68.5,2,106.0,2,28.39,3,6.3,4,4
+16,Water 16 - Water with Vinegar,7,3.96,1,102.5,2,114.0,2,25.7,3,3.2,4,4
+16,Water 16 - Water with Vinegar,8,2.84,1,67.9,2,81.7,1,28.74,3,3.6,4,4
+16,Water 16 - Water with Vinegar,9,3.96,1,105.3,2,163.7,3,25.88,3,7.2,4,4
+16,Water 16 - Water with Vinegar,10,3.24,1,137.3,2,148.9,2,28.29,3,4.6,4,4
+17,Water 17 - Water with Detergent,1,9.37,1,157.7,3,369.4,4,28.34,3,13.2,3,4
+17,Water 17 - Water with Detergent,2,9.8,1,161.1,3,313.3,4,25.38,3,6.5,4,4
+17,Water 17 - Water with Detergent,3,10.13,1,195.6,3,378.9,4,25.83,3,12.6,3,4
+17,Water 17 - Water with Detergent,4,10.21,1,268.6,4,240.6,4,28.66,3,9.5,4,4
+17,Water 17 - Water with Detergent,5,9.89,1,279.0,4,378.2,4,27.14,3,11.2,3,4
+17,Water 17 - Water with Detergent,6,10.22,1,261.0,4,370.6,4,26.45,3,7.1,4,4
+17,Water 17 - Water with Detergent,7,10.32,1,173.6,3,231.3,4,25.53,3,5.0,4,4
+17,Water 17 - Water with Detergent,8,9.9,1,239.1,3,252.4,4,26.62,3,12.1,3,4
+17,Water 17 - Water with Detergent,9,10.41,1,218.1,3,323.7,4,31.47,3,12.9,3,4
+17,Water 17 - Water with Detergent,10,10.25,1,249.2,3,368.1,4,27.98,3,10.4,4,4
+18,Water 18 - Water with Bleach,1,11.3,1,140.8,2,182.7,3,25.5,3,3.0,4,4
+18,Water 18 - Water with Bleach,2,10.62,1,124.9,2,156.9,3,27.02,3,2.7,4,4
+18,Water 18 - Water with Bleach,3,11.38,1,120.0,2,194.3,3,28.5,3,5.0,4,4
+18,Water 18 - Water with Bleach,4,10.16,1,54.0,2,143.2,2,27.26,3,3.5,4,4
+18,Water 18 - Water with Bleach,5,10.18,1,146.2,2,183.6,3,29.03,3,7.7,4,4
+18,Water 18 - Water with Bleach,6,12.0,1,117.2,2,127.0,2,25.28,3,6.5,4,4
+18,Water 18 - Water with Bleach,7,10.94,1,115.2,2,191.6,3,26.27,3,5.5,4,4
+18,Water 18 - Water with Bleach,8,11.27,1,99.2,2,109.1,2,27.44,3,4.0,4,4
+18,Water 18 - Water with Bleach,9,11.34,1,135.8,2,133.0,2,29.86,3,3.7,4,4
+18,Water 18 - Water with Bleach,10,11.89,1,131.4,2,155.0,3,28.18,3,3.9,4,4
+19,Water 19 - Water with Dead Leaves,1,6.32,2,276.1,4,228.5,3,33.54,4,44.7,2,4
+19,Water 19 - Water with Dead Leaves,2,6.66,2,220.5,3,229.6,3,32.56,4,29.0,2,4
+19,Water 19 - Water with Dead Leaves,3,6.76,2,231.3,3,271.2,4,32.61,4,33.7,2,4
+19,Water 19 - Water with Dead Leaves,4,6.93,2,207.0,3,263.8,4,32.36,4,44.3,2,4
+19,Water 19 - Water with Dead Leaves,5,6.61,2,181.1,3,199.0,3,33.65,4,33.8,2,4
+19,Water 19 - Water with Dead Leaves,6,6.09,2,279.0,4,289.6,4,33.38,4,22.9,2,4
+19,Water 19 - Water with Dead Leaves,7,6.83,2,214.8,3,266.0,4,33.53,4,26.8,2,4
+19,Water 19 - Water with Dead Leaves,8,6.83,2,277.4,4,209.2,3,33.65,4,29.6,2,4
+19,Water 19 - Water with Dead Leaves,9,6.92,2,216.1,3,285.5,4,34.59,4,26.9,2,4
+19,Water 19 - Water with Dead Leaves,10,6.79,2,203.9,3,292.1,4,33.52,4,40.5,2,4
+20,Water 20 - Water with Plastic Waste,1,6.78,2,79.9,2,138.7,2,31.99,3,9.9,4,4
+20,Water 20 - Water with Plastic Waste,2,6.65,2,103.9,2,114.5,2,28.86,3,10.4,4,4
+20,Water 20 - Water with Plastic Waste,3,6.96,2,82.2,2,98.9,1,29.88,3,10.7,4,4
+20,Water 20 - Water with Plastic Waste,4,6.73,2,127.6,2,84.4,1,30.21,3,12.1,3,3
+20,Water 20 - Water with Plastic Waste,5,7.31,3,88.6,2,146.4,2,30.75,3,14.8,3,3
+20,Water 20 - Water with Plastic Waste,6,7.0,3,53.7,2,130.2,2,29.13,3,13.7,3,3
+20,Water 20 - Water with Plastic Waste,7,7.37,3,94.0,2,132.6,2,28.2,3,12.2,3,3
+20,Water 20 - Water with Plastic Waste,8,6.91,2,115.5,2,95.4,1,28.29,3,14.7,3,3
+20,Water 20 - Water with Plastic Waste,9,6.84,2,119.3,2,145.0,2,30.96,3,13.5,3,3
+20,Water 20 - Water with Plastic Waste,10,7.36,3,88.0,2,111.7,2,30.03,3,12.6,3,3
+21,Water 21 - Water with Compost,1,7.37,3,254.7,4,289.6,4,33.89,4,57.6,1,4
+21,Water 21 - Water with Compost,2,7.5,4,347.1,4,340.8,4,32.3,4,49.0,2,4
+21,Water 21 - Water with Compost,3,7.37,3,307.7,4,377.2,4,34.71,4,31.4,2,4
+21,Water 21 - Water with Compost,4,7.3,3,288.1,4,332.5,4,32.44,4,45.9,2,4
+21,Water 21 - Water with Compost,5,7.07,3,353.0,4,303.8,4,32.24,4,56.1,1,4
+21,Water 21 - Water with Compost,6,7.12,3,281.3,4,407.8,4,32.43,4,43.8,2,4
+21,Water 21 - Water with Compost,7,6.75,2,283.2,4,281.3,4,34.41,4,57.0,1,4
+21,Water 21 - Water with Compost,8,7.18,3,270.5,4,341.8,4,33.04,4,47.6,2,4
+21,Water 21 - Water with Compost,9,7.14,3,305.2,4,315.0,4,34.54,4,36.0,2,4
+21,Water 21 - Water with Compost,10,6.88,2,312.8,4,313.2,4,33.72,4,47.2,2,4
+22,Water 22 - Water with Algae,1,8.99,1,188.4,3,317.4,4,33.97,4,14.1,3,4
+22,Water 22 - Water with Algae,2,8.35,4,239.2,3,289.4,4,32.15,4,19.1,3,4
+22,Water 22 - Water with Algae,3,8.25,4,267.5,4,234.3,4,34.4,4,19.1,3,4
+22,Water 22 - Water with Algae,4,8.03,4,232.8,3,274.5,4,34.03,4,20.8,3,4
+22,Water 22 - Water with Algae,5,8.49,4,259.0,4,275.4,4,34.71,4,19.7,3,4
+22,Water 22 - Water with Algae,6,7.96,4,207.3,3,269.5,4,34.2,4,11.4,3,4
+22,Water 22 - Water with Algae,7,7.94,4,247.2,3,221.1,3,32.4,4,18.1,3,4
+22,Water 22 - Water with Algae,8,8.96,1,219.0,3,309.6,4,34.49,4,13.9,3,4
+22,Water 22 - Water with Algae,9,8.74,1,212.6,3,296.8,4,34.24,4,15.1,3,4
+22,Water 22 - Water with Algae,10,7.67,4,275.2,4,216.9,3,34.9,4,22.9,2,4
+23,Water 23 - Water with Coffee Grounds,1,5.72,1,217.6,3,275.7,4,20.41,1,36.0,2,4
+23,Water 23 - Water with Coffee Grounds,2,5.79,1,101.7,2,219.8,3,19.36,1,45.2,2,3
+23,Water 23 - Water with Coffee Grounds,3,5.67,1,170.1,3,256.9,4,20.82,1,28.3,2,4
+23,Water 23 - Water with Coffee Grounds,4,5.23,1,103.0,2,265.0,4,19.68,1,52.5,1,4
+23,Water 23 - Water with Coffee Grounds,5,5.22,1,107.6,2,257.1,4,20.73,1,34.1,2,4
+23,Water 23 - Water with Coffee Grounds,6,5.41,1,116.8,2,273.0,4,18.91,1,39.8,2,4
+23,Water 23 - Water with Coffee Grounds,7,5.1,1,206.5,3,167.6,3,19.36,1,45.1,2,3
+23,Water 23 - Water with Coffee Grounds,8,5.74,1,213.5,3,204.5,3,20.23,1,29.6,2,3
+23,Water 23 - Water with Coffee Grounds,9,5.41,1,111.9,2,213.6,3,19.22,1,53.5,1,3
+23,Water 23 - Water with Coffee Grounds,10,5.03,1,144.5,2,207.6,3,20.85,1,50.7,2,3
+24,Water 24 - Distilled Water,1,6.6,2,6.9,1,18.6,1,24.93,2,1.1,4,4
+24,Water 24 - Distilled Water,2,6.9,2,1.9,1,8.1,1,24.54,2,1.4,4,4
+24,Water 24 - Distilled Water,3,7.16,3,6.4,1,19.9,1,22.06,2,2.4,4,4
+24,Water 24 - Distilled Water,4,6.74,2,1.3,1,19.1,1,22.21,2,2.3,4,4
+24,Water 24 - Distilled Water,5,6.71,2,2.2,1,26.7,1,22.99,2,0.4,4,4
+24,Water 24 - Distilled Water,6,7.4,3,0.0,1,26.5,1,22.43,2,0.4,4,4
+24,Water 24 - Distilled Water,7,6.75,2,1.7,1,21.5,1,22.08,2,0.0,4,4
+24,Water 24 - Distilled Water,8,7.29,3,2.4,1,13.1,1,22.52,2,0.2,4,4
+24,Water 24 - Distilled Water,9,7.24,3,5.3,1,23.6,1,23.43,2,2.3,4,4
+24,Water 24 - Distilled Water,10,7.01,3,1.1,1,17.6,1,24.84,2,0.1,4,4
+25,"Water 25 - Water with Leaves, Food Waste, and Used Oil",1,7.17,3,384.0,4,367.8,4,33.37,4,68.9,1,4
+25,"Water 25 - Water with Leaves, Food Waste, and Used Oil",2,6.09,2,337.5,4,352.2,4,34.06,4,54.7,1,4
+25,"Water 25 - Water with Leaves, Food Waste, and Used Oil",3,7.36,3,288.8,4,310.5,4,33.82,4,42.0,2,4
+25,"Water 25 - Water with Leaves, Food Waste, and Used Oil",4,6.41,2,356.0,4,371.3,4,32.98,4,69.8,1,4
+25,"Water 25 - Water with Leaves, Food Waste, and Used Oil",5,6.8,2,334.4,4,378.7,4,32.3,4,61.1,1,4
+25,"Water 25 - Water with Leaves, Food Waste, and Used Oil",6,7.28,3,358.1,4,400.0,4,34.16,4,46.5,2,4
+25,"Water 25 - Water with Leaves, Food Waste, and Used Oil",7,6.68,2,307.4,4,344.1,4,33.36,4,52.5,1,4
+25,"Water 25 - Water with Leaves, Food Waste, and Used Oil",8,6.14,2,331.2,4,386.5,4,33.12,4,44.6,2,4
+25,"Water 25 - Water with Leaves, Food Waste, and Used Oil",9,7.38,3,288.1,4,408.1,4,32.28,4,42.9,2,4
+25,"Water 25 - Water with Leaves, Food Waste, and Used Oil",10,7.11,3,377.4,4,372.3,4,33.76,4,56.8,1,4
+26,Water 26 - Water with All,1,7.16,3,312.2,4,366.0,4,34.0,4,80.0,1,4
+26,Water 26 - Water with All,2,8.24,4,372.1,4,445.9,4,33.8,4,64.1,1,4
+26,Water 26 - Water with All,3,7.66,4,321.3,4,405.4,4,32.67,4,54.3,1,4
+26,Water 26 - Water with All,4,8.19,4,336.8,4,419.1,4,33.72,4,82.3,1,4
+26,Water 26 - Water with All,5,8.19,4,397.5,4,426.4,4,33.84,4,75.7,1,4
+26,Water 26 - Water with All,6,6.55,2,392.9,4,427.8,4,32.8,4,57.2,1,4
+26,Water 26 - Water with All,7,7.91,4,330.9,4,364.2,4,32.02,4,84.8,1,4
+26,Water 26 - Water with All,8,7.63,4,340.1,4,338.4,4,33.9,4,51.2,1,4
+26,Water 26 - Water with All,9,7.99,4,321.5,4,374.6,4,33.02,4,64.8,1,4
+26,Water 26 - Water with All,10,7.94,4,377.7,4,393.8,4,32.25,4,52.1,1,4
+28,Water 28 - Canal Water 1 (Diff Loc),1,6.74,2,242.7,3,294.6,4,26.9,3,31.5,2,4
+28,Water 28 - Canal Water 1 (Diff Loc),2,7.23,3,216.3,3,226.4,3,30.28,3,17.8,3,3
+28,Water 28 - Canal Water 1 (Diff Loc),3,7.14,3,192.5,3,295.3,4,28.41,3,31.7,2,4
+28,Water 28 - Canal Water 1 (Diff Loc),4,6.57,2,209.3,3,281.9,4,25.05,3,22.5,2,4
+28,Water 28 - Canal Water 1 (Diff Loc),5,6.82,2,170.6,3,223.4,3,27.3,3,15.2,3,3
+28,Water 28 - Canal Water 1 (Diff Loc),6,7.62,4,176.4,3,244.6,4,29.93,3,27.5,2,4
+28,Water 28 - Canal Water 1 (Diff Loc),7,7.75,4,270.9,4,192.3,3,31.03,3,16.1,3,4
+28,Water 28 - Canal Water 1 (Diff Loc),8,6.53,2,288.2,4,326.6,4,29.03,3,29.3,2,4
+28,Water 28 - Canal Water 1 (Diff Loc),9,7.56,4,212.7,3,199.6,3,25.15,3,23.1,2,4
+28,Water 28 - Canal Water 1 (Diff Loc),10,7.7,4,242.7,3,321.4,4,31.44,3,17.2,3,4
+29,Water 29 - Canal Water 2 (Diff Loc),1,7.77,4,186.5,3,280.1,4,23.57,2,24.9,2,4
+29,Water 29 - Canal Water 2 (Diff Loc),2,6.97,2,200.9,3,236.6,4,22.5,2,27.8,2,4
+29,Water 29 - Canal Water 2 (Diff Loc),3,6.67,2,226.5,3,334.0,4,23.05,2,33.2,2,4
+29,Water 29 - Canal Water 2 (Diff Loc),4,7.73,4,272.3,4,220.2,3,22.44,2,19.9,3,4
+29,Water 29 - Canal Water 2 (Diff Loc),5,7.4,3,264.0,4,291.4,4,22.53,2,34.3,2,4
+29,Water 29 - Canal Water 2 (Diff Loc),6,7.24,3,263.2,4,309.2,4,23.35,2,38.1,2,4
+29,Water 29 - Canal Water 2 (Diff Loc),7,7.35,3,245.3,3,286.2,4,24.59,2,30.7,2,4
+29,Water 29 - Canal Water 2 (Diff Loc),8,6.73,2,160.2,3,255.2,4,22.91,2,21.9,2,4
+29,Water 29 - Canal Water 2 (Diff Loc),9,6.58,2,226.1,3,232.8,4,23.36,2,16.4,3,4
+29,Water 29 - Canal Water 2 (Diff Loc),10,7.75,4,161.5,3,326.9,4,24.57,2,30.4,2,4
+30,Water 30 - Canal Water 3 (Diff Loc),1,7.26,3,219.4,3,274.2,4,34.38,4,37.4,2,4
+30,Water 30 - Canal Water 3 (Diff Loc),2,7.17,3,271.5,4,290.8,4,32.96,4,26.9,2,4
+30,Water 30 - Canal Water 3 (Diff Loc),3,6.73,2,159.3,3,197.6,3,34.7,4,23.6,2,4
+30,Water 30 - Canal Water 3 (Diff Loc),4,7.57,4,225.7,3,209.3,3,32.74,4,25.9,2,4
+30,Water 30 - Canal Water 3 (Diff Loc),5,7.16,3,228.4,3,207.0,3,33.12,4,22.1,2,4
+30,Water 30 - Canal Water 3 (Diff Loc),6,7.11,3,200.8,3,281.6,4,34.37,4,31.2,2,4
+30,Water 30 - Canal Water 3 (Diff Loc),7,6.6,2,164.2,3,295.3,4,32.85,4,33.1,2,4
+30,Water 30 - Canal Water 3 (Diff Loc),8,7.48,3,286.0,4,328.5,4,33.0,4,29.6,2,4
+30,Water 30 - Canal Water 3 (Diff Loc),9,6.71,2,202.5,3,344.5,4,34.1,4,24.8,2,4
+30,Water 30 - Canal Water 3 (Diff Loc),10,7.39,3,290.7,4,232.6,4,33.13,4,34.8,2,4
+31,Water 31 - Canal Water 4 (Diff Loc),1,7.72,4,250.5,4,320.9,4,30.17,3,32.1,2,4
+31,Water 31 - Canal Water 4 (Diff Loc),2,7.29,3,246.9,3,252.0,4,27.53,3,24.1,2,4
+31,Water 31 - Canal Water 4 (Diff Loc),3,6.77,2,182.1,3,341.1,4,28.4,3,20.7,3,4
+31,Water 31 - Canal Water 4 (Diff Loc),4,6.71,2,161.6,3,323.6,4,25.71,3,34.3,2,4
+31,Water 31 - Canal Water 4 (Diff Loc),5,7.75,4,282.6,4,186.4,3,27.36,3,34.2,2,4
+31,Water 31 - Canal Water 4 (Diff Loc),6,6.7,2,206.5,3,207.6,3,30.82,3,34.3,2,3
+31,Water 31 - Canal Water 4 (Diff Loc),7,7.71,4,174.8,3,254.4,4,27.88,3,31.9,2,4
+31,Water 31 - Canal Water 4 (Diff Loc),8,6.86,2,216.6,3,228.4,3,30.24,3,26.2,2,3
+31,Water 31 - Canal Water 4 (Diff Loc),9,7.3,3,196.4,3,317.5,4,28.28,3,35.9,2,4
+31,Water 31 - Canal Water 4 (Diff Loc),10,7.05,3,292.1,4,347.4,4,28.23,3,22.0,2,4
+32,Water 32 - Canal Water 5 (Diff Loc),1,7.07,3,229.1,3,344.3,4,20.45,1,35.0,2,4
+32,Water 32 - Canal Water 5 (Diff Loc),2,6.71,2,187.5,3,289.0,4,20.62,1,28.9,2,4
+32,Water 32 - Canal Water 5 (Diff Loc),3,6.65,2,276.9,4,324.7,4,18.86,1,34.1,2,4
+32,Water 32 - Canal Water 5 (Diff Loc),4,6.91,2,285.8,4,205.0,3,19.31,1,38.7,2,4
+32,Water 32 - Canal Water 5 (Diff Loc),5,6.83,2,217.7,3,239.4,4,18.08,1,16.3,3,4
+32,Water 32 - Canal Water 5 (Diff Loc),6,7.25,3,185.4,3,349.1,4,19.12,1,15.7,3,4
+32,Water 32 - Canal Water 5 (Diff Loc),7,7.9,4,275.9,4,290.5,4,20.37,1,18.4,3,4
+32,Water 32 - Canal Water 5 (Diff Loc),8,6.93,2,274.5,4,298.3,4,18.42,1,32.6,2,4
+32,Water 32 - Canal Water 5 (Diff Loc),9,7.17,3,150.8,3,193.5,3,18.77,1,35.9,2,3
+32,Water 32 - Canal Water 5 (Diff Loc),10,7.32,3,259.1,4,269.7,4,18.33,1,22.2,2,4
