@@ -37,10 +37,9 @@ import seaborn as sns
 from scipy.stats import entropy as scipy_entropy
 
 from sklearn.impute import KNNImputer
-from sklearn.ensemble import IsolationForest, RandomForestClassifier
+from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.model_selection import StratifiedKFold, GridSearchCV, train_test_split
-from sklearn.svm import SVC
 from sklearn.neural_network import MLPClassifier
 from imblearn.over_sampling import SMOTE
 from sklearn.metrics import (
@@ -53,7 +52,6 @@ from sklearn.metrics import (
     r2_score,
     ConfusionMatrixDisplay,
 )
-import xgboost as xgb
 import joblib
 
 warnings.filterwarnings("ignore")
@@ -439,26 +437,6 @@ def train_and_evaluate(df):
     skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
     models = {
-        "XGBoost": {
-            "estimator": xgb.XGBClassifier(
-                objective="multi:softmax", eval_metric="mlogloss",
-                use_label_encoder=False, random_state=42, verbosity=0,
-            ),
-            "params": {
-                "n_estimators": [100, 200, 300],
-                "max_depth": [3, 5, 7],
-                "learning_rate": [0.05, 0.1, 0.2],
-                "subsample": [0.8, 1.0],
-            },
-        },
-        "SVM": {
-            "estimator": SVC(random_state=42, probability=True),
-            "params": {
-                "C": [0.1, 1, 10, 100],
-                "gamma": ["scale", "auto", 0.01, 0.1],
-                "kernel": ["rbf"],
-            },
-        },
         "MLP": {
             "estimator": MLPClassifier(
                 random_state=42, max_iter=1000, early_stopping=True,
@@ -470,15 +448,6 @@ def train_and_evaluate(df):
                 "alpha": [0.0001, 0.001, 0.01],
                 "learning_rate": ["constant", "adaptive"],
             },
-        },
-        "Random Forest": {
-            "estimator": RandomForestClassifier(random_state=42, n_jobs=1),
-            "params": {
-                "n_estimators": [100, 200, 300],
-                "max_depth": [None, 5, 10],
-                "min_samples_split": [2, 5],
-                "min_samples_leaf": [1, 2],
-            }
         },
     }
 
