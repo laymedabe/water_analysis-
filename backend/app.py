@@ -39,6 +39,8 @@ def predict():
 
         # Construct DataFrame
         df = pd.DataFrame([data])
+        # Force all columns to float to handle string inputs from frontend
+        df = df.astype(float)
 
         # Feature Engineering (must match training pipeline exactly)
         df['DO_Temp_Ratio'] = df['DO'] / df['Temperature']
