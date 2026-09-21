@@ -58,8 +58,11 @@ def predict():
         prediction_label = le.inverse_transform(prediction_encoded)[0]
 
         return jsonify({
-            "wqi_class": prediction_label,
-            "status": "success"
+            "prediction": prediction_label,
+            "engineered_features": {
+                "DO_Temp_Ratio": round(float(df['DO_Temp_Ratio'].iloc[0]), 2),
+                "pH_Deviation": round(float(df['pH_Deviation'].iloc[0]), 2)
+            }
         })
 
     except Exception as e:
