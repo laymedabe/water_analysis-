@@ -71,7 +71,7 @@ export default function Home() {
     <div className="container">
       <header className="header">
         <h1>WQI Prediction Dashboard</h1>
-        <p>Powered by XGBoost & Vercel Serverless Functions</p>
+        <p>Powered by XGBoost & Render Cloud API</p>
       </header>
 
       <main className="dashboard">
@@ -175,14 +175,6 @@ export default function Home() {
               </div>
 
               <div className="metrics-list">
-                <div className="metric-item">
-                  <span className="metric-label">Engineered DO/Temp Ratio</span>
-                  <span className="metric-value">{result.engineered_features?.DO_Temp_Ratio}</span>
-                </div>
-                <div className="metric-item">
-                  <span className="metric-label">Engineered pH Deviation</span>
-                  <span className="metric-value">| {result.engineered_features?.pH_Deviation} |</span>
-                </div>
                 {result.probabilities && result.probabilities[result.prediction] && (
                   <div className="metric-item">
                     <span className="metric-label">Confidence Score</span>
