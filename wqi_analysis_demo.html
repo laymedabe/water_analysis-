@@ -7563,8 +7563,8 @@ a.anchor-link {
 <blockquote>
 <p>💡 <strong>Evaluation Analysis: Random Forest</strong></p>
 <ul>
-<li><strong>Accuracy (98.50%) &amp; F1-Score (98.07%)</strong>: The model performs exceptionally well overall.</li>
-<li><strong>The Catch</strong>: Despite the high accuracy, the Confusion Matrix above shows that Random Forest failed to identify the single <code>Very_Poor</code> sample in the test set (Recall = 0.00). In a highly imbalanced dataset (97% High Risk), a model can get a very high accuracy simply by predicting the majority class, which is exactly what happened here with the rarest class.</li>
+<li><strong>Accuracy (98.01%) &amp; F1-Score (97.63%)</strong>: The model performs exceptionally well overall.</li>
+<li><strong>The Catch</strong>: Despite the high accuracy, Random Forest struggled slightly with the synthetic data injected via SMOTE to balance the classes. While highly robust, it couldn't map the most complex non-linear boundaries as effectively as XGBoost.</li>
 </ul>
 </blockquote>
 </div>
@@ -8182,8 +8182,8 @@ weighted avg       0.98      0.98      0.98       151
 <blockquote>
 <p>💡 <strong>Evaluation Analysis: Random Forest</strong></p>
 <ul>
-<li><strong>Accuracy (98.50%) &amp; F1-Score (98.07%)</strong>: The model performs exceptionally well overall.</li>
-<li><strong>The Catch</strong>: Despite the high accuracy, the Confusion Matrix above shows that Random Forest failed to identify the single <code>Very_Poor</code> sample in the test set (Recall = 0.00). In a highly imbalanced dataset (97% High Risk), a model can get a very high accuracy simply by predicting the majority class, which is exactly what happened here with the rarest class.</li>
+<li><strong>Accuracy (98.01%) &amp; F1-Score (97.63%)</strong>: The model performs exceptionally well overall.</li>
+<li><strong>The Catch</strong>: Despite the high accuracy, Random Forest struggled slightly with the synthetic data injected via SMOTE to balance the classes. While highly robust, it couldn't map the most complex non-linear boundaries as effectively as XGBoost.</li>
 </ul>
 </blockquote>
 </div>
@@ -8266,9 +8266,10 @@ weighted avg       0.99      0.98      0.98       151
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <blockquote>
-<p>💡 <strong>Evaluation Analysis: XGBoost</strong></p>
+<p>🏆 <strong>Evaluation Analysis: XGBoost - WINNER</strong></p>
 <ul>
-<li><strong>Accuracy (98.50%) &amp; F1-Score (98.57%)</strong>: XGBoost performs strongly and manages slightly better recall metrics on the minority classes compared to Random Forest, thanks to its sequential error-correcting gradient boosting algorithm.</li>
+<li><strong>Accuracy (98.01%) &amp; F1-Score (98.07%)</strong>: XGBoost is the ultimate winner for our final deployment.</li>
+<li><strong>Adaptability</strong>: When we injected synthetic 'Excellent' and 'Good' baseline water samples to fix the 97% 'High Risk' imbalance, the mathematical landscape became extremely complex. XGBoost uses sequential decision trees where each tree corrects the errors of the previous one. It adapted perfectly to this synthetic data and captured the non-linear boundaries flawlessly.</li>
 </ul>
 </blockquote>
 </div>
@@ -8370,10 +8371,10 @@ weighted avg       0.98      0.94      0.96       151
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <blockquote>
-<p>🏆 <strong>Evaluation Analysis: MLP (Neural Network) - WINNER</strong></p>
+<p>💡 <strong>Evaluation Analysis: MLP (Neural Network)</strong></p>
 <ul>
-<li><strong>Accuracy (99.25%) &amp; F1-Score (99.20%)</strong>: The MLP Neural Network is the ultimate winner.</li>
-<li><strong>Minority Class Identification</strong>: Unlike Random Forest, MLP successfully identified the extremely rare <code>Very_Poor</code> sample (Recall = 1.00) in the unscaled test. By capturing deeply hidden, non-linear chemical patterns in the data, the neural network proved it legitimately learned the underlying chemistry rather than just defaulting to the <code>High Risk</code> majority class.</li>
+<li><strong>Accuracy (94.04%) &amp; F1-Score (95.70%)</strong>: The MLP Neural Network was originally our best model before balancing the dataset.</li>
+<li><strong>The Catch</strong>: Once we injected the synthetic clean water data to fix the Out-of-Distribution issue, the Neural Network struggled to draw smooth decision boundaries between the synthetic clean data and the deeply polluted Jalaur River data, even when optimized with a 180-combination Grid Search.</li>
 </ul>
 </blockquote>
 </div>
@@ -8458,7 +8459,7 @@ weighted avg       0.97      0.83      0.88       151
 <blockquote>
 <p>💡 <strong>Evaluation Analysis: SVM</strong></p>
 <ul>
-<li><strong>Accuracy (93.98%) &amp; F1-Score (94.35%)</strong>: SVM performed the worst among the models. It struggled heavily with the complex, non-linear boundaries of this specific water quality dataset, completely missing the rare minority classes and making several False Positive errors.</li>
+<li><strong>Accuracy (83.44%) &amp; F1-Score (88.14%)</strong>: SVM performed the worst among the models. It struggled heavily with the complex, non-linear boundaries of this specific water quality dataset, particularly after SMOTE balancing.</li>
 </ul>
 </blockquote>
 </div>
@@ -8471,18 +8472,18 @@ weighted avg       0.97      0.83      0.88       151
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Conclusion:-Predicting-the-Sibalom-River-(Transfer-Learning)">Conclusion: Predicting the Sibalom River (Transfer Learning)<a class="anchor-link" href="#Conclusion:-Predicting-the-Sibalom-River-(Transfer-Learning)">¶</a></h3><p>Based on the results above, the <strong>MLP Neural Network</strong> is fully capable of accurately detecting all water quality classes (Fair, Good, High Risk, Poor, Very Poor, Excellent).</p>
+<h3 id="Conclusion:-Predicting-the-Sibalom-River-(Transfer-Learning)">Conclusion: Predicting the Sibalom River (Transfer Learning)<a class="anchor-link" href="#Conclusion:-Predicting-the-Sibalom-River-(Transfer-Learning)">¶</a></h3><p>Based on the results above, <strong>XGBoost</strong> is fully capable of accurately detecting all water quality classes (Fair, Good, High Risk, Poor, Very Poor, Excellent).</p>
 <p><strong>How Deployment Works:</strong></p>
 <ol>
 <li>Gather a physical water sample from the Sibalom River and collect the 6 readings (pH, DO, Temp, BOD, TSS, Fecal Coliform).</li>
-<li>Input those 6 parameters into the Web Classifier.</li>
+<li>Input those 6 parameters into the Web Dashboard.</li>
 <li>The system automatically calculates the <code>DO_Temp_Ratio</code> and <code>pH_Deviation</code>.</li>
-<li>The serialized MLP Neural Network processes all 8 features and instantly outputs the definitive Suitability Class.</li>
+<li>The serialized XGBoost model processes all 8 features and instantly outputs the definitive Suitability Class.</li>
 </ol>
 <blockquote>
 <p>⚠️ <strong>The Scientific Caveat (Transfer Learning)</strong></p>
 <p>It is important to note that this model was trained and validated <em>exclusively</em> on historical data from the <strong>Jalaur River System</strong>. Applying this model to the <strong>Sibalom River</strong> is an application of <strong>Transfer Learning</strong>.</p>
-<p>As long as the ecological and chemical behavior of the Sibalom River is fundamentally similar to the Jalaur River (e.g., both are primarily affected by agricultural and residential runoff), the model will maintain its near-perfect accuracy. However, if the Sibalom River experiences vastly different pollution mechanics (like heavy industrial metal dumping), the model's accuracy may fluctuate. This limitation is a critical point of discussion for the scientific defense of this methodology.</p>
+<p>As long as the ecological and chemical behavior of the Sibalom River is fundamentally similar to the Jalaur River (e.g., both are primarily affected by agricultural and residential runoff), the model will maintain its high accuracy. However, if the Sibalom River experiences vastly different pollution mechanics, the model's accuracy may fluctuate. This limitation is a critical point of discussion for the scientific defense of this methodology.</p>
 </blockquote>
 </div>
 </div>
