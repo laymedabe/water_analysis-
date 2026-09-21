@@ -149,6 +149,13 @@ body {
   pointer-events: none;
 }
 
+.input-hint {
+  font-size: 0.75rem;
+  color: rgba(148, 163, 184, 0.7);
+  margin-top: 0.2rem;
+  padding-left: 0.2rem;
+}
+
 .submit-btn {
   width: 100%;
   padding: 1rem;

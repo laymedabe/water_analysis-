@@ -71,7 +71,6 @@ export default function Home() {
     <div className="container">
       <header className="header">
         <h1>WQI Prediction Dashboard</h1>
-        <p>Powered by XGBoost & Render Cloud API</p>
       </header>
 
       <main className="dashboard">
@@ -86,6 +85,7 @@ export default function Home() {
                   <input type="number" step="0.01" name="pH" value={formData.pH} onChange={handleInputChange} required />
                   <span className="input-unit">pH</span>
                 </div>
+                <div className="input-hint">Standard Range: 6.5 - 9.0</div>
               </div>
 
               <div className="input-group">
@@ -94,6 +94,7 @@ export default function Home() {
                   <input type="number" step="0.1" name="Temperature" value={formData.Temperature} onChange={handleInputChange} required />
                   <span className="input-unit">°C</span>
                 </div>
+                <div className="input-hint">Standard Range: 25 - 31 °C</div>
               </div>
 
               <div className="input-group">
@@ -102,6 +103,7 @@ export default function Home() {
                   <input type="number" step="0.01" name="DO" value={formData.DO} onChange={handleInputChange} required />
                   <span className="input-unit">mg/L</span>
                 </div>
+                <div className="input-hint">Standard Range: Minimum 5.0 mg/L</div>
               </div>
 
               <div className="input-group">
@@ -110,6 +112,7 @@ export default function Home() {
                   <input type="number" step="0.01" name="BOD" value={formData.BOD} onChange={handleInputChange} required />
                   <span className="input-unit">mg/L</span>
                 </div>
+                <div className="input-hint">Standard Range: Maximum 7.0 mg/L</div>
               </div>
 
               <div className="input-group">
@@ -118,6 +121,7 @@ export default function Home() {
                   <input type="number" step="0.01" name="TSS" value={formData.TSS} onChange={handleInputChange} required />
                   <span className="input-unit">mg/L</span>
                 </div>
+                <div className="input-hint">Standard Range: Maximum 80 mg/L</div>
               </div>
 
               <div className="input-group">
@@ -126,6 +130,7 @@ export default function Home() {
                   <input type="number" step="0.1" name="Fecal_Coliform" value={formData.Fecal_Coliform} onChange={handleInputChange} required />
                   <span className="input-unit">MPN/100mL</span>
                 </div>
+                <div className="input-hint">Standard Range: Maximum 200 MPN</div>
               </div>
 
             </div>
