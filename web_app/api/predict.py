@@ -12,9 +12,16 @@ try:
     model_dir = os.path.join(os.path.dirname(__file__), 'models')
     model = joblib.load(os.path.join(model_dir, 'mlp_model.pkl'))
     scaler = joblib.load(os.path.join(model_dir, 'scaler.pkl'))
+    
+    le_path = os.path.join(model_dir, 'label_encoder.pkl')
+    if os.path.exists(le_path):
+        label_encoder = joblib.load(le_path)
+    else:
+        label_encoder = None
 except Exception as e:
     model = None
     scaler = None
+    label_encoder = None
     print(f"Error loading models: {e}")
 
 @app.route('/api/predict', methods=['POST'])
@@ -44,22 +51,33 @@ def predict():
         scaled_features = scaler.transform(features)
         
         # Predict
-        prediction = model.predict(scaled_features)[0]
+        raw_pred = model.predict(scaled_features)[0]
+        
+        if label_encoder is not None:
+            prediction = str(label_encoder.inverse_transform([raw_pred])[0])
+        else:
+            # Fallback if no label encoder, just cast to string to avoid int32 JSON error
+            prediction = str(raw_pred)
         
         # Also get probabilities if possible
         probabilities = None
         if hasattr(model, "predict_proba"):
             probs = model.predict_proba(scaled_features)[0]
-            # Convert to percentages for display
             classes = model.classes_
-            probabilities = {cls: round(prob * 100, 2) for cls, prob in zip(classes, probs)}
+            
+            # Decode classes if label encoder exists
+            if label_encoder is not None:
+                classes = label_encoder.inverse_transform(classes)
+                
+            # Convert to percentages for display, ensure keys are strings (not numpy types)
+            probabilities = {str(cls): round(float(prob) * 100, 2) for cls, prob in zip(classes, probs)}
             
         return jsonify({
             'prediction': prediction,
             'probabilities': probabilities,
             'engineered_features': {
-                'DO_Temp_Ratio': round(do_temp_ratio, 4),
-                'pH_Deviation': round(ph_dev, 4)
+                'DO_Temp_Ratio': round(float(do_temp_ratio), 4),
+                'pH_Deviation': round(float(ph_dev), 4)
             }
         })
         
