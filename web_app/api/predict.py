@@ -81,43 +81,29 @@ def predict():
         # Scale features
         scaled_features = scaler.transform(features)
         
-        # Calculate analytical WQI first
-        analytical_wqi = compute_wqi({
-            "DO": do, "BOD": bod, "TSS": tss, 
-            "pH": pH, "Temperature": temp, "Fecal_Coliform": fecal
-        })
+        # Predict using MLP
+        raw_pred = model.predict(scaled_features)[0]
         
-        # ML Out-of-Distribution Fallback Logic:
-        # The ML model was exclusively trained on polluted data (Poor, Very Poor, High Risk)
-        # It literally does not have classes for Excellent or Good.
-        if analytical_wqi <= 50:
-            prediction = "Excellent" if analytical_wqi <= 25 else "Good"
-            probabilities = {prediction: 100.0}
+        if label_encoder is not None:
+            prediction = str(label_encoder.inverse_transform([raw_pred])[0])
         else:
-            # Predict using MLP
-            raw_pred = model.predict(scaled_features)[0]
-            
+            prediction = str(raw_pred)
+        
+        # Also get probabilities if possible
+        probabilities = None
+        if hasattr(model, "predict_proba"):
+            probs = model.predict_proba(scaled_features)[0]
+            classes = model.classes_
             if label_encoder is not None:
-                prediction = str(label_encoder.inverse_transform([raw_pred])[0])
-            else:
-                prediction = str(raw_pred)
-            
-            # Also get probabilities if possible
-            probabilities = None
-            if hasattr(model, "predict_proba"):
-                probs = model.predict_proba(scaled_features)[0]
-                classes = model.classes_
-                if label_encoder is not None:
-                    classes = label_encoder.inverse_transform(classes)
-                probabilities = {str(cls): round(float(prob) * 100, 2) for cls, prob in zip(classes, probs)}
+                classes = label_encoder.inverse_transform(classes)
+            probabilities = {str(cls): round(float(prob) * 100, 2) for cls, prob in zip(classes, probs)}
             
         return jsonify({
             'prediction': prediction,
             'probabilities': probabilities,
             'engineered_features': {
                 'DO_Temp_Ratio': round(float(do_temp_ratio), 4),
-                'pH_Deviation': round(float(ph_dev), 4),
-                'Analytical_WQI': round(float(analytical_wqi), 2)
+                'pH_Deviation': round(float(ph_dev), 4)
             }
         })
         

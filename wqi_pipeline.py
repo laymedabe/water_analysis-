@@ -611,6 +611,54 @@ def save_processed_data(df):
     print(f"     Shape: {df.shape}")
 
 
+def seed_clean_data(df):
+    """
+    Inject synthetic Class A and AA (Excellent/Good) samples 
+    to allow the Neural Network and SMOTE to map the entire decision space.
+    """
+    print("\n  [2d] Seeding dataset with synthetic Excellent, Good, and Fair baseline samples...")
+    np.random.seed(42)
+    
+    # Generate 30 Excellent Samples (Class AA/A)
+    excellent_samples = pd.DataFrame({
+        "DO": np.random.uniform(7.0, 10.0, 30),
+        "BOD": np.random.uniform(0.1, 1.5, 30),
+        "TSS": np.random.uniform(1.0, 15.0, 30),
+        "pH": np.random.uniform(6.8, 7.5, 30),
+        "Temperature": np.random.uniform(22.0, 26.0, 30),
+        "Fecal_Coliform": np.random.uniform(0.0, 1.1, 30)
+    })
+    
+    # Generate 30 Good Samples (Class A/B)
+    good_samples = pd.DataFrame({
+        "DO": np.random.uniform(5.0, 7.0, 30),
+        "BOD": np.random.uniform(1.5, 3.5, 30),
+        "TSS": np.random.uniform(15.0, 40.0, 30),
+        "pH": np.random.uniform(6.5, 8.0, 30),
+        "Temperature": np.random.uniform(25.0, 29.0, 30),
+        "Fecal_Coliform": np.random.uniform(1.1, 50.0, 30)
+    })
+    
+    # Generate 30 Fair/Poor Samples to bridge the gap to the Jalaur data
+    fair_samples = pd.DataFrame({
+        "DO": np.random.uniform(3.0, 5.0, 30),
+        "BOD": np.random.uniform(3.5, 6.0, 30),
+        "TSS": np.random.uniform(40.0, 70.0, 30),
+        "pH": np.random.uniform(6.0, 8.5, 30),
+        "Temperature": np.random.uniform(28.0, 31.0, 30),
+        "Fecal_Coliform": np.random.uniform(50.0, 200.0, 30)
+    })
+    
+    synthetic_df = pd.concat([excellent_samples, good_samples, fair_samples], ignore_index=True)
+    
+    # Compute engineered features for synthetic data
+    synthetic_df["DO_Temp_Ratio"] = synthetic_df["DO"] / synthetic_df["Temperature"]
+    synthetic_df["pH_Deviation"] = (synthetic_df["pH"] - 7.0).abs()
+    
+    df_combined = pd.concat([df, synthetic_df], ignore_index=True)
+    print(f"       Added {len(synthetic_df)} synthetic baseline records.")
+    return df_combined
+
 # =============================================================================
 # MAIN PIPELINE
 # =============================================================================
@@ -626,6 +674,9 @@ def main():
 
     # 2. Preprocess
     df = preprocess_data(df)
+
+    # 2d. Seed Synthetic Clean Data
+    df = seed_clean_data(df)
 
     # 3. Compute WQI
     df = compute_wqi_column(df)
