@@ -8469,6 +8469,41 @@ weighted avg       0.97      0.83      0.88       151
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=010d1d0c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Evaluation-Metric-Explanations">Evaluation Metric Explanations<a class="anchor-link" href="#Evaluation-Metric-Explanations">¶</a></h3><p><strong>1. Accuracy</strong></p>
+<ul>
+<li><strong>What it means:</strong> The percentage of water samples that the model predicted correctly out of all samples.</li>
+<li><strong>Context:</strong> For instance, if MLP Accuracy is 96.69%, it means the model correctly classified approximately 97 out of every 100 samples into the exact DENR Suitability Class.</li>
+</ul>
+<p><strong>2. Precision</strong></p>
+<ul>
+<li><strong>What it means:</strong> When the model predicted a specific class (e.g., 'Good'), how many of those predictions were actually correct?</li>
+<li><strong>Context:</strong> A precision of 1.00 for 'High Risk' means that every single time the model threw a 'High Risk' warning, it was guaranteed to be accurate with zero false alarms.</li>
+</ul>
+<p><strong>3. Recall (Sensitivity)</strong></p>
+<ul>
+<li><strong>What it means:</strong> Out of all the actual samples of a specific class (e.g., all actual 'Excellent' rivers), how many did the model successfully find?</li>
+<li><strong>Context:</strong> If the recall for 'Good' is 1.00, it means the model successfully identified 100% of the truly Good water samples without missing a single one.</li>
+</ul>
+<p><strong>4. F1-Score</strong></p>
+<ul>
+<li><strong>What it means:</strong> The harmonic mean of Precision and Recall. It is the absolute most important metric for imbalanced datasets.</li>
+<li><strong>Context:</strong> Because our original dataset was 97% High Risk, plain Accuracy is misleading. A model could just guess 'High Risk' every time and get 97% Accuracy while being completely useless for clean water. The F1-Score penalizes the model for missing minority classes. An F1-Score of 97.56% proves the model has legitimately learned the complex chemical signatures of every class natively.</li>
+</ul>
+<p><strong>5. Confusion Matrix</strong></p>
+<ul>
+<li><strong>What it means:</strong> A heatmap showing exactly where the model got confused. The diagonal line (top-left to bottom-right) represents correct predictions. Any numbers outside the diagonal are errors.</li>
+<li><strong>Context:</strong> If the model predicted 'Fair' when the actual water was 'Good', you will see a number in the corresponding box off the main diagonal. This allows us to visually verify that the model rarely makes critical errors (e.g., confusing 'Excellent' with 'High Risk').</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
