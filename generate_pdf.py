@@ -161,42 +161,71 @@ def create_pdf(filename="Final_Documentation.pdf"):
             "framework. The following mathematical computations were utilized:")
     Story.append(Paragraph(text, styles['Justify']))
     
+    def make_fraction(left_side, numerator, denominator):
+        eq_style = ParagraphStyle('EqStyle', parent=styles['Normal'], fontName='Helvetica-Oblique', fontSize=12, alignment=1)
+        left_style = ParagraphStyle('LeftStyle', parent=styles['Normal'], fontName='Helvetica-Oblique', fontSize=12, alignment=2)
+        
+        t = Table([
+            [Paragraph(left_side, left_style), Paragraph(numerator, eq_style)],
+            ['', Paragraph(denominator, eq_style)]
+        ], colWidths=[120, 120])
+        
+        t.setStyle(TableStyle([
+            ('LINEABOVE', (1, 1), (1, 1), 1, colors.black),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('VALIGN', (0, 0), (0, -1), 'MIDDLE'),
+            ('SPAN', (0, 0), (0, 1)),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
+            ('TOPPADDING', (0, 0), (-1, -1), 4),
+        ]))
+        return t
+
     math_guide = [
         ("1. Quality Rating Scale (q<sub>i</sub>)", 
-         "Each chemical parameter was mathematically normalized into a standard rating scale using the formula:<br/><br/>"
-         "<font face='Helvetica-Oblique' size='12'>&nbsp;&nbsp;q<sub>i</sub> = 100 &times; (V<sub>i</sub> - V<sub>ideal</sub>) / (S<sub>i</sub> - V<sub>ideal</sub>)</font><br/><br/>"
+         "Each chemical parameter was mathematically normalized into a standard rating scale using the formula:<br/>",
+         make_fraction("q<sub>i</sub> = 100 &times;", "V<sub>i</sub> - V<sub>ideal</sub>", "S<sub>i</sub> - V<sub>ideal</sub>"),
          "This transforms raw concentrations (V<sub>i</sub>) against chemical standards (S<sub>i</sub>) and ideal values (V<sub>ideal</sub>) into a unitless metric."),
         
         ("2. Weighted Arithmetic Water Quality Index (WQI)", 
-         "The aggregation of multiple chemical quality ratings into a single, definitive index score. The formula used was:<br/><br/>"
-         "<font face='Helvetica-Oblique' size='12'>&nbsp;&nbsp;WQI = &Sigma; (q<sub>i</sub> &times; w<sub>i</sub>) / &Sigma; w<sub>i</sub></font><br/><br/>"
+         "The aggregation of multiple chemical quality ratings into a single, definitive index score. The formula used was:<br/>",
+         make_fraction("WQI =", "&Sigma; (q<sub>i</sub> &times; w<sub>i</sub>)", "&Sigma; w<sub>i</sub>"),
          "where 'w<sub>i</sub>' represents the mathematical weight or importance of each chemical parameter."),
         
         ("3. Information Entropy Weighting", 
          "Rather than subjectively assigning weights, Information Theory (Entropy) mathematics was used to calculate "
          "objective weights for each chemical parameter. This statistical computation measures the variance and dispersion "
-         "of a chemical's concentration across the dataset to determine its true informative value."),
+         "of a chemical's concentration across the dataset to determine its true informative value.",
+         None, ""),
         
         ("4. Pearson Correlation Coefficient", 
          "A mathematical computation used to measure the linear correlation between individual chemical variables and the final WQI. "
-         "This statistical analysis helped refine the final Combined Weights used in the feature engineering process."),
+         "This statistical analysis helped refine the final Combined Weights used in the feature engineering process.",
+         None, ""),
         
         ("5. Euclidean Distance (KNN Imputation)", 
          "To handle missing data (e.g., a missing DO reading), the K-Nearest Neighbors algorithm utilized the Euclidean Distance formula "
          "in multi-dimensional chemical space to find the most chemically similar river samples and average their values:<br/><br/>"
-         "<font face='Helvetica-Oblique' size='12'>&nbsp;&nbsp;d(p, q) = &radic;&Sigma;(p<sub>i</sub> - q<sub>i</sub>)<sup>2</sup></font><br/><br/>"),
+         "<font face='Helvetica-Oblique' size='12'>&nbsp;&nbsp;d(p, q) = &radic;&Sigma;(p<sub>i</sub> - q<sub>i</sub>)<sup>2</sup></font><br/><br/>",
+         None, ""),
         
         ("6. Thermodynamic Ratios (DO/Temp Ratio)", 
          "An engineered computation that explicitly models the inverse non-linear relationship between water temperature and the physical solubility "
-         "of oxygen. By dividing Dissolved Oxygen by Temperature, we fed the ML model a direct thermodynamic constraint."),
+         "of oxygen. By dividing Dissolved Oxygen by Temperature, we fed the ML model a direct thermodynamic constraint.",
+         None, ""),
         
         ("7. pH Deviation", 
          "A simple but critical mathematical absolute distance function:<br/><br/>"
          "<font face='Helvetica-Oblique' size='12'>&nbsp;&nbsp;&Delta;pH = |pH - 7.0|</font><br/><br/>"
-         "Since pH is logarithmic, modeling the absolute deviation from neutral proved more mathematically useful for the machine learning algorithms than raw pH values alone.")
+         "Since pH is logarithmic, modeling the absolute deviation from neutral proved more mathematically useful for the machine learning algorithms than raw pH values alone.",
+         None, "")
     ]
-    for term, definition in math_guide:
-        Story.append(Paragraph(f"<b>{term}</b><br/>{definition}", styles['Justify']))
+    for term, text1, eq_table, text2 in math_guide:
+        Story.append(Paragraph(f"<b>{term}</b><br/>{text1}", styles['Justify']))
+        if eq_table:
+            Story.append(eq_table)
+            Story.append(Spacer(1, 10))
+        if text2:
+            Story.append(Paragraph(text2, styles['Justify']))
         
     doc.build(Story)
     print("PDF generated successfully.")
