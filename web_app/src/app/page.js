@@ -194,11 +194,11 @@ export default function Home() {
               <div className="class-legend">
                 <h4>Water Quality Scale</h4>
                 <div className="legend-items">
-                  <span className="legend-badge bg-excellent">Excellent</span>
-                  <span className="legend-badge bg-good">Good</span>
-                  <span className="legend-badge bg-fair">Fair</span>
-                  <span className="legend-badge bg-poor">Poor</span>
-                  <span className="legend-badge bg-high-risk">High Risk</span>
+                  <span className="legend-badge bg-excellent">Excellent (Class AA)</span>
+                  <span className="legend-badge bg-good">Good (Class A)</span>
+                  <span className="legend-badge bg-fair">Fair (Class B)</span>
+                  <span className="legend-badge bg-poor">Poor (Class C)</span>
+                  <span className="legend-badge bg-high-risk">High Risk (Class D)</span>
                 </div>
               </div>
             </div>
