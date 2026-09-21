@@ -70,7 +70,7 @@ export default function Home() {
     <div className="container">
       <header className="header">
         <h1>WQI Prediction Dashboard</h1>
-        <p>Powered by MLP Neural Network & Vercel Serverless Functions</p>
+        <p>Powered by XGBoost & Vercel Serverless Functions</p>
       </header>
 
       <main className="dashboard">
