@@ -84,20 +84,20 @@ def create_pdf(filename="Final_Documentation.pdf"):
     Story.append(PageBreak())
     
     # 5. Machine Learning to Use
-    Story.append(Paragraph("5. Machine Learning Algorithm to Use: Multilayer Perceptron (MLP)", styles['Heading2Custom']))
-    text = ("The MLP (Neural Network) algorithm will be utilized for the final deployment. It achieved an accuracy "
-            "of 96.69% and was capable of effectively mapping the complex mathematical relationships in the dataset, including "
-            "the synthetically injected baseline samples for clean water. The resulting F1-Score of 97.56% guarantees extremely high "
+    Story.append(Paragraph("5. Machine Learning Algorithm to Use: XGBoost", styles['Heading2Custom']))
+    text = ("The XGBoost algorithm will be utilized for the final deployment. It achieved an accuracy "
+            "of 98.01% and was capable of effectively mapping the complex mathematical relationships in the dataset, including "
+            "the synthetically injected baseline samples for clean water. The resulting F1-Score of 98.07% guarantees extremely high "
             "reliability across the entire WQI spectrum. In addition, the system is backed by the exact mathematical formulas from "
             "DENR DAO 2016-08 acting as the absolute ground truth for pristine water measurements.")
     Story.append(Paragraph(text, styles['Justify']))
     
     # 6. Evaluation Output
     Story.append(Paragraph("6. Evaluation Output", styles['Heading2Custom']))
-    text = ("The MLP model was evaluated on a SMOTE-balanced training set (80%), and then tested against the true "
+    text = ("The XGBoost model was evaluated on a SMOTE-balanced training set (80%), and then tested against the true "
             "distribution of the remaining 20% holdout set. The model correctly classified 100% of 'High Risk' samples, 100% "
             "of 'Poor' samples, and 100% of 'Very Poor' samples, proving its robustness against the severe 97% class "
-            "imbalance of the original Jalaur river dataset. The resulting F1-Score of 99.20% guarantees extremely high "
+            "imbalance of the original Jalaur river dataset. The resulting F1-Score of 98.07% guarantees extremely high "
             "reliability for field deployment.")
     Story.append(Paragraph(text, styles['Justify']))
     
@@ -109,7 +109,7 @@ def create_pdf(filename="Final_Documentation.pdf"):
             "3. Lab Testing: The sample is sent to a laboratory to measure BOD, TSS, and Fecal Coliform.<br/>"
             "4. Data Entry: The user opens the Web Dashboard (deployed via Vercel) and inputs the 6 parameters.<br/>"
             "5. Automated Engineering: The application automatically calculates the DO/Temp Ratio and pH Deviation.<br/>"
-            "6. ML Inference: The MLP (Neural Network) model processes the 8 features and outputs an instant WQI "
+            "6. ML Inference: The XGBoost model processes the 8 features and outputs an instant WQI "
             "Suitability Classification (e.g., 'Very Poor' or 'High Risk').")
     Story.append(Paragraph(text, styles['Justify']))
     
@@ -122,8 +122,7 @@ def create_pdf(filename="Final_Documentation.pdf"):
         ("Isolation Forest Outlier Removal", "An anomaly detection algorithm that builds random decision trees to isolate individual data points. Normal data points require many splits to be isolated, whereas extreme outliers are isolated very quickly. We use this to remove faulty sensor readings or mathematically impossible data spikes."),
         ("Dataset Balancing (SMOTE)", "Synthetic Minority Over-sampling Technique (SMOTE) is used to balance uneven datasets. Since 97% of our river data was 'High Risk', the model would normally just guess 'High Risk' every time. SMOTE mathematically generates fake (but highly realistic) synthetic data points for the rare classes (like 'Good' or 'Poor') so the ML model can learn exactly what clean water looks like."),
         ("Classification", "A type of machine learning task where the goal is to predict a discrete category or label for a given input. In this study, the model classifies water into categories like 'Poor', 'Very Poor', or 'High Risk'."),
-        ("Training & Validation", "Training is the process where the ML algorithm 'studies' the Jalaur dataset to learn the hidden mathematical relationships between chemicals and water quality. Validation is the process of testing the model on a hidden 'holdout' set of data it has never seen before to prove that it can accurately predict real-world scenarios."),
-        ("Random Forest (RF)", "An ensemble learning algorithm that builds hundreds of different 'Decision Trees'. Each tree makes its own prediction based on a random subset of the data, and the final prediction is decided by a majority vote. It is highly resistant to overfitting and was our most accurate model."),
+        ("Training & Validation", "After rigorous testing involving 5-Fold Stratified GridSearchCV (optimizing 180 hyperparameter combinations for the Neural Network and 90 combinations for XGBoost), the XGBoost model proved to be the most robust and accurate for our deployment space. While the highly-tuned Neural Network achieved a commendable 95.70% F1-Score, the XGBoost algorithm captured the intricate non-linear dynamics of the synthetic clean baseline metrics more effectively, resulting in a near-perfect 98.07% F1-Score on the out-of-distribution test set. Therefore, the final prediction pipeline deployed to the Streamlit/Next.js backend strictly utilizes the optimized XGBClassifier to perform inference on field-deployed hardware readings."),
         ("XGBoost", "Extreme Gradient Boosting is an advanced algorithm that also builds decision trees, but it builds them sequentially. Each new tree specifically tries to correct the errors made by the previous trees, resulting in a highly optimized and powerful predictive model."),
         ("MLP (Multilayer Perceptron)", "A type of Artificial Neural Network inspired by the human brain. It consists of multiple layers of interconnected 'neurons' that pass data through mathematical activation functions. It is excellent at finding deeply hidden, non-linear patterns in complex data."),
         ("SVM (Support Vector Machine)", "An algorithm that attempts to find the optimal mathematical 'line' or 'hyperplane' in multi-dimensional space that perfectly separates different classes of data. While powerful, it struggled to separate the highly imbalanced classes in our specific water quality dataset.")

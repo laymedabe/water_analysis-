@@ -41,7 +41,7 @@ app = Flask(__name__)
 # In Vercel, the working directory is usually the project root (web_app/)
 try:
     model_dir = os.path.join(os.path.dirname(__file__), 'models')
-    model = joblib.load(os.path.join(model_dir, 'mlp_model.pkl'))
+    model = joblib.load(os.path.join(model_dir, 'xgboost_model.pkl'))
     scaler = joblib.load(os.path.join(model_dir, 'scaler.pkl'))
     
     le_path = os.path.join(model_dir, 'label_encoder.pkl')

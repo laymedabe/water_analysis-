@@ -41,6 +41,7 @@ from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.model_selection import StratifiedKFold, GridSearchCV, train_test_split
 from sklearn.neural_network import MLPClassifier
+from xgboost import XGBClassifier
 from imblearn.over_sampling import SMOTE
 from sklearn.metrics import (
     classification_report,
@@ -437,6 +438,14 @@ def train_and_evaluate(df):
     skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
     models = {
+        "XGBoost": {
+            "estimator": XGBClassifier(use_label_encoder=False, eval_metric="mlogloss", random_state=42),
+            "params": {
+                "n_estimators": [100, 200],
+                "max_depth": [3, 5, 7],
+                "learning_rate": [0.01, 0.1, 0.2]
+            }
+        },
         "MLP": {
             "estimator": MLPClassifier(
                 random_state=42, max_iter=1000, early_stopping=True,
