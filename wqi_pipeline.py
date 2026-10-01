@@ -181,7 +181,11 @@ def compute_quality_rating(value, param):
     if si == ideal:
         return 0
 
-    qi = ((value - ideal) / (si - ideal)) * 100
+    if param == "pH":
+        qi = (abs(value - ideal) / abs(si - ideal)) * 100
+    else:
+        qi = ((value - ideal) / (si - ideal)) * 100
+        
     return max(qi, 0)  # Clamp to 0 minimum
 
 
