@@ -1,6 +1,7 @@
 import os
 import joblib
 import pandas as pd
+import numpy as np
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
@@ -14,6 +15,7 @@ try:
     model = joblib.load(os.path.join(MODEL_DIR, 'xgboost_model.pkl'))
     scaler = joblib.load(os.path.join(MODEL_DIR, 'scaler.pkl'))
     le = joblib.load(os.path.join(MODEL_DIR, 'label_encoder.pkl'))
+    imputer = joblib.load(os.path.join(MODEL_DIR, 'imputer.pkl'))
     models_loaded = True
 except Exception as e:
     print(f"Error loading models: {e}")
@@ -33,14 +35,26 @@ def predict():
         print(f"Received data: {data}")
 
         # Required raw features from frontend
-        required_features = ['pH', 'DO', 'Temperature', 'BOD', 'TSS', 'Fecal_Coliform']
-        if not all(feature in data for feature in required_features):
-            return jsonify({"error": "Missing required features"}), 400
+        required_features = ['DO', 'BOD', 'TSS', 'pH', 'Temperature', 'Fecal_Coliform']
+
+        # Clean missing values
+        clean_data = {}
+        for feature in required_features:
+            val = data.get(feature, "")
+            if val == "" or val is None or str(val).upper() == "N/A":
+                clean_data[feature] = np.nan
+            else:
+                clean_data[feature] = float(val)
 
         # Construct DataFrame
-        df = pd.DataFrame([data])
-        # Force all columns to float to handle string inputs from frontend
-        df = df.astype(float)
+        df = pd.DataFrame([clean_data])
+        
+        # Impute missing values
+        df[required_features] = pd.DataFrame(
+            imputer.transform(df[required_features]),
+            columns=required_features,
+            index=df.index
+        )
 
         # Feature Engineering (must match training pipeline exactly)
         df['DO_Temp_Ratio'] = df['DO'] / df['Temperature']
