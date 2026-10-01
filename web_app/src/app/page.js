@@ -4,12 +4,12 @@ import { useState } from "react";
 
 export default function Home() {
   const [formData, setFormData] = useState({
-    pH: "7.0",
-    Temperature: "25.0",
-    DO: "5.0",
-    BOD: "2.0",
-    TSS: "10.0",
-    Fecal_Coliform: "100.0",
+    pH: "N/A",
+    Temperature: "N/A",
+    DO: "N/A",
+    BOD: "N/A",
+    TSS: "N/A",
+    Fecal_Coliform: "N/A",
   });
   
   const [loading, setLoading] = useState(false);
@@ -82,7 +82,7 @@ export default function Home() {
               <div className="input-group">
                 <label>pH Level</label>
                 <div className="input-wrapper">
-                  <input type="number" step="0.01" name="pH" value={formData.pH} onChange={handleInputChange} required />
+                  <input type="text" inputMode="decimal" name="pH" value={formData.pH} onChange={handleInputChange} />
                   <span className="input-unit">pH</span>
                 </div>
                 <div className="input-hint">Standard Range: 6.5 - 9.0</div>
@@ -91,7 +91,7 @@ export default function Home() {
               <div className="input-group">
                 <label>Temperature</label>
                 <div className="input-wrapper">
-                  <input type="number" step="0.1" name="Temperature" value={formData.Temperature} onChange={handleInputChange} required />
+                  <input type="text" inputMode="decimal" name="Temperature" value={formData.Temperature} onChange={handleInputChange} />
                   <span className="input-unit">°C</span>
                 </div>
                 <div className="input-hint">Standard Range: 25 - 31 °C</div>
@@ -100,7 +100,7 @@ export default function Home() {
               <div className="input-group">
                 <label>Dissolved Oxygen (DO)</label>
                 <div className="input-wrapper">
-                  <input type="number" step="0.01" name="DO" value={formData.DO} onChange={handleInputChange} required />
+                  <input type="text" inputMode="decimal" name="DO" value={formData.DO} onChange={handleInputChange} />
                   <span className="input-unit">mg/L</span>
                 </div>
                 <div className="input-hint">Standard Range: Minimum 5.0 mg/L</div>
@@ -109,7 +109,7 @@ export default function Home() {
               <div className="input-group">
                 <label>Biochemical Oxygen Demand (BOD)</label>
                 <div className="input-wrapper">
-                  <input type="number" step="0.01" name="BOD" value={formData.BOD} onChange={handleInputChange} required />
+                  <input type="text" inputMode="decimal" name="BOD" value={formData.BOD} onChange={handleInputChange} />
                   <span className="input-unit">mg/L</span>
                 </div>
                 <div className="input-hint">Standard Range: Maximum 7.0 mg/L</div>
@@ -118,7 +118,7 @@ export default function Home() {
               <div className="input-group">
                 <label>Total Suspended Solids (TSS)</label>
                 <div className="input-wrapper">
-                  <input type="number" step="0.01" name="TSS" value={formData.TSS} onChange={handleInputChange} required />
+                  <input type="text" inputMode="decimal" name="TSS" value={formData.TSS} onChange={handleInputChange} />
                   <span className="input-unit">mg/L</span>
                 </div>
                 <div className="input-hint">Standard Range: Maximum 80 mg/L</div>
@@ -127,7 +127,7 @@ export default function Home() {
               <div className="input-group">
                 <label>Fecal Coliform</label>
                 <div className="input-wrapper">
-                  <input type="number" step="0.1" name="Fecal_Coliform" value={formData.Fecal_Coliform} onChange={handleInputChange} required />
+                  <input type="text" inputMode="decimal" name="Fecal_Coliform" value={formData.Fecal_Coliform} onChange={handleInputChange} />
                   <span className="input-unit">MPN/100mL</span>
                 </div>
                 <div className="input-hint">Standard Range: Maximum 200 MPN</div>
