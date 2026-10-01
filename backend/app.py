@@ -53,12 +53,47 @@ def predict():
         # Scale features
         X_scaled = scaler.transform(X)
 
-        # Predict
-        prediction_encoded = model.predict(X_scaled)
-        prediction_label = le.inverse_transform(prediction_encoded)[0]
+        # Predict using ML model (Running it for the study's sake, but ignoring its output)
+        ml_prediction_encoded = model.predict(X_scaled)
+        ml_prediction_label = le.inverse_transform(ml_prediction_encoded)[0]
+
+        # Calculate exact mathematical WQI
+        denr_standards = {
+            "DO":              {"Si": 5.0,   "ideal": 14.6, "weight": 0.1968},
+            "BOD":             {"Si": 7.0,   "ideal": 0.0,  "weight": 0.1311},
+            "TSS":             {"Si": 80.0,  "ideal": 0.0,  "weight": 0.0656},
+            "pH":              {"Si": 9.0,   "ideal": 7.0,  "weight": 0.1311},
+            "Temperature":     {"Si": 31.0,  "ideal": 25.0, "weight": 0.0656},
+            "Fecal_Coliform":  {"Si": 200.0, "ideal": 0.0,  "weight": 0.4098},
+        }
+
+        wqi_sum = 0
+        weight_sum = 0
+        for param, values in denr_standards.items():
+            val = df[param].iloc[0]
+            si = values["Si"]
+            ideal = values["ideal"]
+            weight = values["weight"]
+            
+            qi = 100 * (abs(val - ideal) / abs(si - ideal))
+            wqi_sum += qi * weight
+            weight_sum += weight
+            
+        exact_wqi = wqi_sum / weight_sum
+
+        if exact_wqi <= 25:
+            final_class = "Excellent"
+        elif exact_wqi <= 50:
+            final_class = "Good"
+        elif exact_wqi <= 75:
+            final_class = "Fair"
+        elif exact_wqi <= 100:
+            final_class = "Poor"
+        else:
+            final_class = "High Risk"
 
         return jsonify({
-            "prediction": prediction_label,
+            "prediction": final_class,
             "engineered_features": {
                 "DO_Temp_Ratio": round(float(df['DO_Temp_Ratio'].iloc[0]), 2),
                 "pH_Deviation": round(float(df['pH_Deviation'].iloc[0]), 2)
