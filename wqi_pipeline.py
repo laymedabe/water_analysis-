@@ -342,9 +342,9 @@ def assign_wqi_class(wqi_value):
     elif wqi_value <= 50:
         return "Good"
     elif wqi_value <= 75:
-        return "Poor"
+        return "Fair"
     elif wqi_value <= 100:
-        return "Very_Poor"
+        return "Poor"
     else:
         return "High Risk"
 
