@@ -49,7 +49,7 @@ def create_pdf(filename="Final_Documentation.pdf"):
             "<b>Step 2:</b> Preprocessing (KNN Imputation & Isolation Forest Outlier Removal)<br/>"
             "<b>Step 3:</b> Feature Engineering (Calculation of DO/Temp Ratio and pH Deviation)<br/>"
             "<b>Step 4:</b> WQI Computation (Using DENR DAO 2016-08 formula)<br/>"
-            "<b>Step 5:</b> Classification (Excellent, Good, Fair, Poor, Very Poor, High Risk)<br/>"
+            "<b>Step 5:</b> Classification (Excellent, Good, Fair, Poor, High Risk)<br/>"
             "<b>Step 6:</b> Dataset Balancing (SMOTE to generate minority class synthetic data)<br/>"
             "<b>Step 7:</b> ML Model Training (Grid Search CV for optimal hyperparameters)<br/>"
             "<b>Step 8:</b> Deployment & Simulation (Predicting Sibalom River quality)")
@@ -85,20 +85,20 @@ def create_pdf(filename="Final_Documentation.pdf"):
     
     # 5. Machine Learning to Use
     Story.append(Paragraph("5. Machine Learning Algorithm to Use: XGBoost", styles['Heading2Custom']))
-    text = ("The XGBoost algorithm will be utilized for the final deployment. It achieved an accuracy "
-            "of 98.01% and was capable of effectively mapping the complex mathematical relationships in the dataset, including "
-            "the synthetically injected baseline samples for clean water. The resulting F1-Score of 98.07% guarantees extremely high "
-            "reliability across the entire WQI spectrum. In addition, the system is backed by the exact mathematical formulas from "
-            "DENR DAO 2016-08 acting as the absolute ground truth for pristine water measurements.")
+    text = ("The XGBoost algorithm achieved an accuracy of 98.01% and was capable of effectively mapping the complex mathematical "
+            "relationships in the dataset. Because the training dataset was heavily imbalanced (86% High Risk), the ML model "
+            "demonstrates how machine learning adapts to heavily skewed environmental data. The resulting F1-Score of 96.59% "
+            "guarantees extremely high reliability across the WQI spectrum, making it the optimal choice for analyzing "
+            "the complex chemical interactions of the Sibalom River samples.")
     Story.append(Paragraph(text, styles['Justify']))
     
     # 6. Evaluation Output
     Story.append(Paragraph("6. Evaluation Output", styles['Heading2Custom']))
     text = ("The XGBoost model was evaluated on a SMOTE-balanced training set (80%), and then tested against the true "
-            "distribution of the remaining 20% holdout set. The model correctly classified 100% of 'High Risk' samples, 100% "
-            "of 'Poor' samples, and 100% of 'Very Poor' samples, proving its robustness against the severe 97% class "
-            "imbalance of the original Jalaur river dataset. The resulting F1-Score of 98.07% guarantees extremely high "
-            "reliability for field deployment.")
+            "distribution of the remaining 20% holdout set. The model correctly classified 100% of 'High Risk' samples and 100% "
+            "of 'Excellent' samples, proving its robustness. It demonstrated strong predictive capabilities despite "
+            "the severe 86% class imbalance of the original Jalaur river dataset toward High Risk. The resulting F1-Score "
+            "of 96.59% guarantees high reliability for field deployment and environmental analysis.")
     Story.append(Paragraph(text, styles['Justify']))
     
     # 7. Flow of the Testing Process
@@ -107,21 +107,35 @@ def create_pdf(filename="Final_Documentation.pdf"):
             "1. Sample Collection: Water samples are collected from the Sibalom River.<br/>"
             "2. Field Testing: Portable meters are used on-site to measure pH, DO, and Temperature.<br/>"
             "3. Lab Testing: The sample is sent to a laboratory to measure BOD, TSS, and Fecal Coliform.<br/>"
-            "4. Data Entry: The user opens the Web Dashboard (deployed via Vercel) and inputs the 6 parameters.<br/>"
-            "5. Automated Engineering: The application automatically calculates the DO/Temp Ratio and pH Deviation.<br/>"
-            "6. ML Inference: The XGBoost model processes the 8 features and outputs an instant WQI "
-            "Suitability Classification (e.g., 'Very Poor' or 'High Risk').")
+            "4. Data Entry: The user opens the Web Dashboard and inputs the 6 parameters. Missing data can be marked as 'N/A'.<br/>"
+            "5. KNN Imputation: If 'N/A' is entered, the backend intelligently estimates the missing value using K-Nearest Neighbors.<br/>"
+            "6. ML Inference: The XGBoost model processes the features and outputs an instant WQI Suitability Classification.")
     Story.append(Paragraph(text, styles['Justify']))
     
-    # 8. Glossary
-    Story.append(Paragraph("8. Glossary of Machine Learning Concepts", styles['Heading2Custom']))
+    # 8. Evaluation and Comparative Analysis Methodology
+    Story.append(Paragraph("8. Evaluation and Comparative Analysis Methodology", styles['Heading2Custom']))
+    text = ("To scientifically validate the machine learning model on the new target domain (Sibalom River), the following comparative analysis framework will be executed:<br/><br/>"
+            "<b>Step 1: Data Gathering (Field & Lab)</b><br/>"
+            "Water samples are physically collected from various sites along the Sibalom River. Portable meters immediately measure pH, DO, and Temperature, while the remaining samples are sent to an accredited laboratory to test for BOD, TSS, and Fecal Coliform.<br/><br/>"
+            "<b>Step 2: Ground Truth Computation (The Math)</b><br/>"
+            "The 6 laboratory parameters for each sample are manually calculated using the exact DENR DAO 2016-08 Weighted Arithmetic Water Quality Index formula. The resulting numerical score dictates the absolute 'Ground Truth' classification (e.g., a math score of 62.4 = Fair).<br/><br/>"
+            "<b>Step 3: AI Inference (The Prediction)</b><br/>"
+            "The exact same 6 parameters are fed into the XGBoost Machine Learning model via the web application. The model processes the chemical signatures and outputs its predicted WQI classification based solely on what it learned from the historical Jalaur dataset.<br/><br/>"
+            "<b>Step 4: Comparative Matrix</b><br/>"
+            "The Ground Truth classes are placed side-by-side against the AI Predictions in a Confusion Matrix to track exact matches and deviations.<br/><br/>"
+            "<b>Step 5: Final Analysis</b><br/>"
+            "Researchers will analyze the accuracy percentage of the model. More importantly, any deviations will be analyzed in the context of dataset bias (e.g., investigating if the AI's exposure to the heavily polluted 86% High Risk Jalaur dataset caused it to misclassify moderately clean Sibalom samples).")
+    Story.append(Paragraph(text, styles['Justify']))
+    
+    # 9. Glossary
+    Story.append(Paragraph("9. Glossary of Machine Learning Concepts", styles['Heading2Custom']))
     glossary = [
         ("Transfer Learning", "A machine learning technique where a model trained on one task or dataset (e.g., Jalaur River) is repurposed or applied to a different but related task (e.g., Sibalom River). This is crucial when the target river lacks historical training data."),
         ("Preprocessing", "The fundamental step of cleaning and organizing raw data before feeding it into a machine learning model. This includes handling missing values, removing anomalies, and scaling numbers so the algorithms can process them efficiently."),
         ("KNN Imputation", "K-Nearest Neighbors (KNN) Imputation is an algorithm used to fill in missing data points (like a missing pH reading). It looks at the 'k' most similar data rows (neighbors) and averages their values to estimate and replace the missing number."),
         ("Isolation Forest Outlier Removal", "An anomaly detection algorithm that builds random decision trees to isolate individual data points. Normal data points require many splits to be isolated, whereas extreme outliers are isolated very quickly. We use this to remove faulty sensor readings or mathematically impossible data spikes."),
         ("Dataset Balancing (SMOTE)", "Synthetic Minority Over-sampling Technique (SMOTE) is used to balance uneven datasets. Since 97% of our river data was 'High Risk', the model would normally just guess 'High Risk' every time. SMOTE mathematically generates fake (but highly realistic) synthetic data points for the rare classes (like 'Good' or 'Poor') so the ML model can learn exactly what clean water looks like."),
-        ("Classification", "A type of machine learning task where the goal is to predict a discrete category or label for a given input. In this study, the model classifies water into categories like 'Poor', 'Very Poor', or 'High Risk'."),
+        ("Classification", "A type of machine learning task where the goal is to predict a discrete category or label for a given input. In this study, the model classifies water into categories like 'Excellent', 'Fair', or 'High Risk'."),
         ("Training & Validation", "After rigorous testing involving 5-Fold Stratified GridSearchCV (optimizing 180 hyperparameter combinations for the Neural Network and 90 combinations for XGBoost), the XGBoost model proved to be the most robust and accurate for our deployment space. While the highly-tuned Neural Network achieved a commendable 95.70% F1-Score, the XGBoost algorithm captured the intricate non-linear dynamics of the synthetic clean baseline metrics more effectively, resulting in a near-perfect 98.07% F1-Score on the out-of-distribution test set. Therefore, the final prediction pipeline deployed to the Streamlit/Next.js backend strictly utilizes the optimized XGBClassifier to perform inference on field-deployed hardware readings."),
         ("XGBoost", "Extreme Gradient Boosting is an advanced algorithm that also builds decision trees, but it builds them sequentially. Each new tree specifically tries to correct the errors made by the previous trees, resulting in a highly optimized and powerful predictive model."),
         ("MLP (Multilayer Perceptron)", "A type of Artificial Neural Network inspired by the human brain. It consists of multiple layers of interconnected 'neurons' that pass data through mathematical activation functions. It is excellent at finding deeply hidden, non-linear patterns in complex data."),
@@ -132,8 +146,8 @@ def create_pdf(filename="Final_Documentation.pdf"):
         
     Story.append(PageBreak())
     
-    # 9. Student Research Guide
-    Story.append(Paragraph("9. Student Research Guide: Core Concepts to Master", styles['Heading2Custom']))
+    # 10. Student Research Guide
+    Story.append(Paragraph("10. Student Research Guide: Core Concepts to Master", styles['Heading2Custom']))
     text = ("To fully understand and defend this project, students should dive deeper into the following core concepts. "
             "Mastering these topics provides a complete grasp of both the environmental science and the advanced machine "
             "learning techniques used.")
@@ -143,7 +157,7 @@ def create_pdf(filename="Final_Documentation.pdf"):
         ("Transfer Learning & Domain Adaptation", "What to research: How machine learning models learn patterns in one domain (Jalaur River) and apply them to a different, related domain (Sibalom River).<br/>Why it matters: This is the core justification of the entire study. You need to explain why it is scientifically valid to train a model on one river and test it on another."),
         ("Dealing with Imbalanced Data: The SMOTE Algorithm", "What to research: Synthetic Minority Over-sampling Technique (SMOTE). How does it use mathematics (K-Nearest Neighbors) to generate fake but realistic data points?<br/>Why it matters: 97% of your original data was 'High Risk'. Without SMOTE, the model would have failed. Understanding how SMOTE saved the dataset is critical for your methodology defense."),
         ("Machine Learning Algorithms: MLP & Ensemble Learning", "What to research: What is a Neural Network (MLP)? What is Ensemble Learning? How does XGBoost build sequential trees that learn from each other's mistakes?<br/>Why it matters: MLP was the deployment model (96.69% accuracy) because Neural Networks map complex multidimensional decision spaces natively."),
-        ("Anomaly Detection: Isolation Forest", "What to research: How does Isolation Forest detect anomalies without needing a labeled dataset? How does it isolate extreme data points faster than normal data points?<br/>Why it matters: You used this to clean the raw DENR data and remove faulty sensor readings or impossible chemical spikes before training."),
+        ("Ground Truth & Model Bias", "What to research: How does an AI model react when trained on data that is mostly one class (86% High Risk)?<br/>Why it matters: The highlight of the study is exploring how the ML model learned to identify pollution based on a skewed dataset, and analyzing how it predicts borderline classes compared to standard mathematical formulas."),
         ("Data Imputation: K-Nearest Neighbors (KNN)", "What to research: How does the KNN algorithm calculate Euclidean distance to find the most similar data points?<br/>Why it matters: When the DENR PDF data had blank/missing values for pH or DO, you didn't just delete the row or use the average. You used KNN to mathematically estimate what the missing value should be based on its closest neighbors."),
         ("The Mathematics of Feature Engineering", "What to research: Pearson Correlation and thermodynamic relationships in water (e.g., why does Dissolved Oxygen capacity drop when Temperature rises?).<br/>Why it matters: You explicitly engineered two new features: DO_Temp_Ratio and pH_Deviation. You need to explain why providing these explicit mathematical relationships helped the ML model learn faster."),
         ("Water Quality Index (WQI) Formulas", "What to research: The Weighted Arithmetic Water Quality Index method and the DENR DAO 2016-08 standards.<br/>Why it matters: You need to understand how the raw lab numbers (like 140 MPN Coliform) were converted into the WQI Score that determined the final Suitability Class (Excellent to High Risk)."),
@@ -154,8 +168,8 @@ def create_pdf(filename="Final_Documentation.pdf"):
         
     Story.append(PageBreak())
     
-    # 10. Mathematical Framework
-    Story.append(Paragraph("10. Mathematical & Computational Chemistry Framework", styles['Heading2Custom']))
+    # 11. Mathematical Framework
+    Story.append(Paragraph("11. Mathematical & Computational Chemistry Framework", styles['Heading2Custom']))
     text = ("As a study deeply rooted in computational chemistry and data science, several explicit mathematical and "
             "statistical computations were applied to transform raw chemical concentrations into a predictive machine learning "
             "framework. The following mathematical computations were utilized:")
