@@ -1,13 +1,31 @@
+"""
+patch_nb_grid.py
+This script automatically modifies our Jupyter Notebook (`wqi_analysis_demo.ipynb`).
+It finds the part of the notebook that trains a Neural Network (a brain-like AI) 
+and replaces it with a smarter version that tests hundreds of different 
+settings to automatically find the best "brain structure" for our AI.
+"""
+
 import json
 
 def patch_nb():
+    """
+    Opens the notebook file, finds the AI code block, 
+    and replaces it with the new code that tests different settings.
+    """
+    # 1. Open the notebook so we can read it
     with open('wqi_analysis_demo.ipynb', 'r', encoding='utf-8') as f:
         nb = json.load(f)
         
+    # 2. Look through all the blocks (cells) in the notebook
     for cell in nb['cells']:
         if cell['cell_type'] == 'code':
             source = ''.join(cell['source'])
+            
+            # 3. Find the exact code block we want to replace
             if 'mlp = MLPClassifier(random_state=42' in source:
+                
+                # 4. Swap the old code for the smarter "Grid Search" code
                 cell['source'] = [
                     "print('Grid Search with 5-Fold Stratified CV on Training Set...')\n",
                     "mlp = MLPClassifier(random_state=42, max_iter=1000, early_stopping=True, validation_fraction=0.15)\n",
@@ -32,8 +50,10 @@ def patch_nb():
                     "plt.show()\n"
                 ]
     
+    # 5. Save the updated notebook back to the computer
     with open('wqi_analysis_demo.ipynb', 'w', encoding='utf-8') as f:
         json.dump(nb, f, indent=1)
 
+# Run the function
 patch_nb()
 print("Notebook patched successfully.")

@@ -100,6 +100,20 @@ DENR_STANDARDS = {
 # 1. LOAD DATA
 # =============================================================================
 def load_data(path):
+    """
+    Loads the water quality dataset from a CSV file.
+    
+    Args:
+        path (str): The file path to the CSV dataset.
+        
+    Returns:
+        pd.DataFrame: The loaded dataset as a Pandas DataFrame.
+        
+    Note:
+        Before we can teach a computer to predict water quality, we need to show it 
+        historical examples. This function loads the data and checks if any important 
+        measurements are missing.
+    """
     print("=" * 70)
     print("STEP 1: LOADING WQMA DATA")
     print("=" * 70)
@@ -120,6 +134,24 @@ def load_data(path):
 # 2. DATA PREPROCESSING - KNN Imputation + Outlier Detection
 # =============================================================================
 def preprocess_data(df):
+    """
+    Preprocesses the data by handling missing values and removing outliers.
+    
+    Args:
+        df (pd.DataFrame): The raw dataset.
+        
+    Returns:
+        pd.DataFrame: The cleaned dataset.
+        
+    Note:
+        Real-world data is messy. Here is how we clean it up:
+        1. **Dropping empty columns**: If a test (like Phosphate) wasn't recorded often, we ignore it.
+        2. **Guessing missing values**: If a pH reading is missing, we look at the 5 most similar 
+           water samples and take their average.
+        3. **Removing bad data (Outliers)**: If a sensor broke and recorded a crazy number, we remove it.
+        4. **Creating new clues**: We calculate ratios (like Dissolved Oxygen divided by Temperature) 
+           to give the computer better clues about the water's health.
+    """
     print("\n" + "=" * 70)
     print("STEP 2: DATA PREPROCESSING")
     print("=" * 70)
@@ -217,6 +249,14 @@ def compute_wqi(row):
 
 
 def compute_wqi_column(df):
+    """
+    Applies the compute_wqi function to the entire dataset to calculate the WQI score for each row.
+    
+    Note:
+        Here, we do the math to calculate the final "Water Quality Index" (WQI) score for every sample 
+        using the government's (DENR) formula. Then, we create some graphs to see how polluted 
+        different parts of the river are.
+    """
     print("\n" + "=" * 70)
     print("STEP 3: WQI COMPUTATION (Weighted Arithmetic Method)")
     print("=" * 70)
@@ -272,6 +312,16 @@ def compute_wqi_column(df):
 # 4. FEATURE ENGINEERING - Entropy + Pearson Weighting
 # =============================================================================
 def compute_feature_weights(df):
+    """
+    Computes feature weights based on Information Entropy and Pearson Correlation.
+    
+    Note:
+        How do we know which chemical test is the most important for predicting water health?
+        Instead of guessing, we use math:
+        - **Entropy**: Does this chemical change a lot? If a chemical is always the same amount, it's not a helpful clue.
+        - **Correlation**: How strongly is this chemical linked to the final Water Quality score?
+        Combining these tells us exactly what the computer should focus on.
+    """
     print("\n" + "=" * 70)
     print("STEP 4: FEATURE ENGINEERING - Comprehensive Weighting")
     print("=" * 70)
@@ -350,6 +400,14 @@ def assign_wqi_class(wqi_value):
 
 
 def create_classification_target(df):
+    """
+    Assigns the WQI Class string label based on the numerical WQI score.
+    
+    Note:
+        The computer now turns the number score (like 62.4) into a word label (like 'Fair').
+        This turns our project into a "Classification" problem, where the goal is to predict 
+        the correct category (Excellent, Good, Fair, Poor, or High Risk).
+    """
     print("\n" + "=" * 70)
     print("STEP 5: WQI CLASSIFICATION (DENR Suitability)")
     print("=" * 70)
@@ -405,6 +463,17 @@ def plot_correlation_heatmap(df):
 # 7. MODEL TRAINING & EVALUATION
 # =============================================================================
 def train_and_evaluate(df):
+    """
+    Trains multiple Machine Learning models and evaluates their performance.
+    
+    Note:
+        This is where the actual Machine Learning happens!
+        1. **Label Encoding**: Computers prefer numbers over words, so we change 'Good' to 0, 'Poor' to 1, etc.
+        2. **StandardScaler**: We shrink all the numbers so they are on a similar scale. 
+        3. **Train-Test Split**: We hide 20% of the data like a final exam. The computer learns on the 80%, and we test it on the hidden 20%.
+        4. **SMOTE**: Because almost all our data was 'High Risk' (very polluted), the computer might just guess 'High Risk' every time to look smart. SMOTE mathematically creates fake but realistic 'Clean' water samples so the computer learns fairly.
+        5. **F1-Score**: We score the computer based on how well it balances finding all the pollution without making false alarms.
+    """
     print("\n" + "=" * 70)
     print("STEP 6: MODEL TRAINING & EVALUATION (All Features)")
     print("=" * 70)
@@ -579,6 +648,14 @@ def summarize_results(results):
 # 9. FIELD DEPLOYMENT SIMULATION
 # =============================================================================
 def simulate_field_prediction(best_models):
+    """
+    Simulates real-world testing of water samples in the field.
+    
+    Note:
+        Now that the computer is trained, let's see how it would work in real life!
+        We feed it totally new water chemical readings, and it instantly predicts 
+        if the water is Excellent, Good, Fair, Poor, or High Risk based on what it learned.
+    """
     print("\n" + "=" * 70)
     print("STEP 8: FIELD DEPLOYMENT SIMULATION")
     print("=" * 70)

@@ -1,9 +1,23 @@
+"""
+patch_nb_desc.py
+This script automatically adds a new text block to the very bottom of 
+our Jupyter Notebook (`wqi_analysis_demo.ipynb`).
+It includes simple, easy-to-understand explanations of how we score 
+the AI (using things like Accuracy and F1-Score)
+"""
+
 import json
 
 def append_descriptions():
+    """
+    Opens the notebook, creates a new text block explaining the AI scores,
+    and sticks it at the very end of the file.
+    """
+    # 1. Open the notebook so we can read it
     with open('wqi_analysis_demo.ipynb', 'r', encoding='utf-8') as f:
         nb = json.load(f)
         
+    # 2. Write down what we want the new text block to say
     explanations = [
         {
             "cell_type": "markdown",
@@ -34,10 +48,14 @@ def append_descriptions():
         }
     ]
     
+    # 3. Stick this new block at the end of the notebook
     nb['cells'].extend(explanations)
     
+    # 4. Save the updated notebook back to the computer
     with open('wqi_analysis_demo.ipynb', 'w', encoding='utf-8') as f:
         json.dump(nb, f, indent=1)
 
+# Run the function
 append_descriptions()
 print("Descriptions appended to Notebook successfully.")
+
