@@ -166,6 +166,10 @@ def preprocess_data(df):
     # --- 2a. KNN Imputation for pH (20 nulls) ---
     print("\n  [2a] KNN Imputation (k=5) for missing pH values...")
     missing_before = df[FEATURE_COLS].isnull().sum().sum()
+    
+    # Math: KNN uses Euclidean Distance = sqrt((x2 - x1)^2 + (y2 - y1)^2 ...)
+    # to find the 5 samples in history that have the closest chemical makeup 
+    # to the one with the missing value, and averages them to guess the missing value.
     imputer = KNNImputer(n_neighbors=5, metric="nan_euclidean")
     df[FEATURE_COLS] = pd.DataFrame(
         imputer.fit_transform(df[FEATURE_COLS]),
@@ -191,7 +195,17 @@ def preprocess_data(df):
 
     # --- 2c. Feature Engineering (Field Ratios) ---
     print("\n  [2c] Computing engineered field features...")
+    
+    # Chemistry Math: DO_Temp_Ratio
+    # Warm water holds less oxygen. If temperature rises but DO doesn't drop as expected, 
+    # it might indicate artificial aeration or extreme algae bloom (photosynthesis).
+    # We calculate it as: DO / Temperature
     df_clean["DO_Temp_Ratio"] = df_clean["DO"] / df_clean["Temperature"]
+    
+    # Chemistry Math: pH_Deviation
+    # Pure neutral water is pH 7.0. Organisms care about how far the pH is from neutral.
+    # So, pH 6.0 and pH 8.0 are equally bad (deviation of 1.0). 
+    # Math: |pH - 7.0| gives us the absolute distance from neutral.
     df_clean["pH_Deviation"] = (df_clean["pH"] - 7.0).abs()
     
     return df_clean
@@ -236,15 +250,20 @@ def compute_wqi(row):
         if pd.isna(value):
             continue
 
+        # qi is the "Quality Rating" for this specific chemical (0 is perfect)
         qi = compute_quality_rating(value, param)
+        
+        # wi is the "Weight" (Importance) given by the government (DENR)
         wi = DENR_STANDARDS[param]["weight"]
 
+        # Math: Multiply the rating by its importance and add it to a running total
         numerator += qi * wi
         denominator += wi
 
     if denominator == 0:
         return np.nan
 
+    # Math: Divide by the total weight to get the final Water Quality Index (WQI)
     return numerator / denominator
 
 
@@ -329,20 +348,30 @@ def compute_feature_weights(df):
     features = df[FEATURE_COLS]
     target = df["WQI"]
 
-    # Entropy Weighting
+    # Entropy Weighting (Math: Shannon Entropy)
+    # 1. Normalize values between 0 and 1 so big numbers (like Coliform = 14000) 
+    #    don't overshadow small numbers (like pH = 7.5).
     feat_norm = (features - features.min()) / (features.max() - features.min() + 1e-10)
     entropy_weights = {}
+    
     for col in FEATURE_COLS:
+        # 2. Put the normalized data into 20 bins (like a histogram)
         hist, _ = np.histogram(feat_norm[col].dropna(), bins=20, density=True)
         hist = hist / hist.sum() if hist.sum() > 0 else hist
-        hist = hist[hist > 0]
+        hist = hist[hist > 0] # Remove empty bins to avoid math errors (log of 0)
+        
+        # 3. Calculate Shannon Entropy: H = -Sum(p * log2(p))
+        # High entropy = values are spread out (lots of info). Low entropy = values are all the same.
         ent = scipy_entropy(hist, base=2)
         entropy_weights[col] = ent
 
     max_ent = max(entropy_weights.values()) if max(entropy_weights.values()) > 0 else 1
+    # Scale all entropies so the highest one is 1.0
     entropy_weights = {k: v / max_ent for k, v in entropy_weights.items()}
 
-    # Pearson Correlation
+    # Pearson Correlation (Math: Linear dependency)
+    # Measures how closely the chemical tracks the final WQI score on a scale of -1 to 1.
+    # We take the absolute value |corr| because strong negative correlations (like high DO = lower WQI) are just as important.
     pearson_weights = {}
     for col in FEATURE_COLS:
         corr = features[col].corr(target)
@@ -493,7 +522,10 @@ def train_and_evaluate(df):
         X_scaled, y_encoded, test_size=0.2, random_state=42, stratify=y_encoded
     )
 
-    # Balance dataset with SMOTE on training data only
+    # Balance dataset with SMOTE (Synthetic Minority Over-sampling Technique)
+    # Math: SMOTE finds two real samples of a rare class (e.g. "Excellent" water),
+    # draws a mathematical straight line between them in 8-dimensional space (our 8 features),
+    # and picks a random point on that line to create a brand new, synthetic water sample.
     print("\n  Balancing training dataset using SMOTE...")
     smote = SMOTE(random_state=42, k_neighbors=1) # k=1 because some classes only have 2 samples
     X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
@@ -512,14 +544,22 @@ def train_and_evaluate(df):
 
     models = {
         "XGBoost": {
+            # XGBoost Math: Uses "Decision Trees" (like a math flowchart: Is pH < 7.5?).
+            # "Gradient Boosting" means it builds trees sequentially. Tree 1 makes a guess.
+            # Tree 2 is built specifically to fix the math error (residual) of Tree 1.
+            # Final Guess = Tree 1 + (Learning Rate * Tree 2) + (Learning Rate * Tree 3)...
             "estimator": XGBClassifier(use_label_encoder=False, eval_metric="mlogloss", random_state=42),
             "params": {
-                "n_estimators": [100, 200],
-                "max_depth": [3, 5, 7],
-                "learning_rate": [0.01, 0.1, 0.2]
+                "n_estimators": [100, 200], # How many trees in the sequence
+                "max_depth": [3, 5, 7],     # How many math questions each tree can ask
+                "learning_rate": [0.01, 0.1, 0.2] # Prevents the AI from over-correcting errors
             }
         },
         "MLP": {
+            # MLP Math (Neural Network): Inspired by the brain.
+            # 1. Weights: Each chemical reading is multiplied by a Weight (w) and added to a Bias (b): y = wx + b.
+            # 2. Activation Function (e.g. ReLU): f(x) = max(0, x). This non-linear math allows the AI to draw curved boundaries.
+            # 3. Backpropagation: Uses Calculus (derivatives) to walk backward and adjust the weights to minimize errors.
             "estimator": MLPClassifier(
                 random_state=42, max_iter=1000, early_stopping=True,
                 validation_fraction=0.15,
