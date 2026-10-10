@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "leaflet/dist/leaflet.css";
 
 :root {
   --bg-color: #0f172a;
@@ -301,4 +302,65 @@ body {
   color: var(--text-muted);
   font-weight: 600;
   border-top-width: 2px;
+}
+
+/* Map Legend Custom Styles */
+.map-wrapper .leaflet-container {
+  font-family: 'Inter', sans-serif;
+}
+
+.map-legend {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1f2937;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 250px;
+}
+
+.map-legend h4 {
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.legend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+.color-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.gradient-bar {
+  height: 10px;
+  background: linear-gradient(to right, #f8fafc, #22c55e);
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #e2e8f0;
+}
+
+.gradient-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: #475569;
 }
