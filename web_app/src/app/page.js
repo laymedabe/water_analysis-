@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import WaterBackground from "../components/WaterBackground";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -68,7 +69,9 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
+    <>
+      <WaterBackground />
+      <div className="container">
       <header className="header">
         <h1>WQI Prediction Dashboard</h1>
       </header>
@@ -203,5 +206,6 @@ export default function Home() {
         </section>
       </main>
     </div>
+    </>
   );
 }

@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #0f172a;
-  --panel-bg: rgba(30, 41, 59, 0.4);
-  --border-color: rgba(255, 255, 255, 0.1);
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
+  /* Water Palette */
+  --bg-color: #06182c; /* Deep water base */
+  --panel-bg: rgba(9, 29, 54, 0.65); /* Aquatic glassmorphic panel */
+  --border-color: rgba(56, 189, 248, 0.18); /* Water surface border highlight */
+  
+  --text-main: #f0f9ff;
+  --text-muted: #7dd3fc;
+  
+  --accent: #0284c7;
+  --accent-hover: #0369a1;
   
   --color-excellent: #10b981;
-  --color-good: #3b82f6;
+  --color-good: #38bdf8;
   --color-fair: #f59e0b;
   --color-poor: #f97316;
   --color-very-poor: #ef4444;
@@ -26,14 +29,13 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
-  background-attachment: fixed;
+  background-image: none; /* No gradient background */
   color: var(--text-main);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
 }
 
 .container {
@@ -41,6 +43,8 @@ body {
   margin: 0 auto;
   padding: 2rem;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .header {
@@ -52,9 +56,8 @@ body {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: linear-gradient(to right, #60a5fa, #34d399);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #38bdf8;
+  letter-spacing: -0.02em;
 }
 
 .header p {
@@ -76,12 +79,12 @@ body {
 
 .glass-panel {
   background: var(--panel-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(2, 12, 27, 0.45);
   display: flex;
   flex-direction: column;
 }
@@ -93,6 +96,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: #e0f2fe;
 }
 
 .form-grid {
@@ -127,7 +131,7 @@ body {
 
 .input-wrapper input {
   width: 100%;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(6, 21, 40, 0.7);
   border: 1px solid var(--border-color);
   color: white;
   padding: 0.75rem 1rem;
@@ -139,14 +143,14 @@ body {
 
 .input-wrapper input:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25);
 }
 
 .input-unit {
   position: absolute;
   right: 1rem;
-  color: var(--text-muted);
+  color: rgba(125, 211, 252, 0.7);
   font-size: 0.8rem;
   pointer-events: none;
 }
@@ -260,7 +264,7 @@ body {
 
 /* Dynamic Classes */
 .class-excellent { color: var(--color-excellent); text-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
-.class-good { color: var(--color-good); text-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+.class-good { color: var(--color-good); text-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
 .class-fair { color: var(--color-fair); text-shadow: 0 0 15px rgba(245, 158, 11, 0.4); }
 .class-poor { color: var(--color-poor); text-shadow: 0 0 15px rgba(249, 115, 22, 0.4); }
 .class-very-poor { color: var(--color-very-poor); text-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
@@ -304,4 +308,213 @@ body {
   color: var(--text-muted);
   font-weight: 600;
   border-top-width: 2px;
+}
+
+/* ========================================================= */
+/* ANIMATED WATER SCENE: DROPLETS, RIPPLES & BUBBLES          */
+/* ========================================================= */
+.water-background-scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Realistic Water Droplets */
+.water-droplet {
+  position: absolute;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.4));
+  will-change: transform;
+}
+
+.droplet-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.droplet-1 {
+  top: 8%;
+  left: 5%;
+  width: 42px;
+  height: 58px;
+  opacity: 0.85;
+  animation: floatDroplet1 7.5s ease-in-out infinite;
+}
+
+.droplet-2 {
+  top: 20%;
+  right: 5%;
+  width: 34px;
+  height: 48px;
+  opacity: 0.8;
+  animation: floatDroplet2 9s ease-in-out infinite;
+}
+
+.droplet-3 {
+  bottom: 15%;
+  left: 6%;
+  width: 50px;
+  height: 68px;
+  opacity: 0.75;
+  animation: floatDroplet3 11s ease-in-out infinite;
+}
+
+.droplet-4 {
+  bottom: 22%;
+  right: 8%;
+  width: 28px;
+  height: 40px;
+  opacity: 0.7;
+  animation: floatDroplet1 8.5s ease-in-out infinite reverse;
+}
+
+.droplet-5 {
+  top: 50%;
+  left: 2%;
+  width: 30px;
+  height: 42px;
+  opacity: 0.65;
+  animation: floatDroplet2 10.5s ease-in-out infinite reverse;
+}
+
+.droplet-6 {
+  top: 68%;
+  right: 3%;
+  width: 38px;
+  height: 52px;
+  opacity: 0.8;
+  animation: floatDroplet3 10s ease-in-out infinite;
+}
+
+@keyframes floatDroplet1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(12px, -22px, 0) rotate(4deg);
+  }
+  66% {
+    transform: translate3d(-10px, -36px, 0) rotate(-3deg);
+  }
+}
+
+@keyframes floatDroplet2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  40% {
+    transform: translate3d(-15px, -26px, 0) rotate(-5deg);
+  }
+  75% {
+    transform: translate3d(10px, -14px, 0) rotate(3deg);
+  }
+}
+
+@keyframes floatDroplet3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(14px, -32px, 0) rotate(5deg);
+  }
+}
+
+/* Expanding Water Ripples */
+.water-ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.ripple-1 {
+  top: 18%;
+  left: 22%;
+  width: 140px;
+  height: 140px;
+  margin-top: -70px;
+  margin-left: -70px;
+  animation: ripplePulse 11s infinite cubic-bezier(0.2, 0.8, 0.4, 1);
+}
+
+.ripple-2 {
+  top: 70%;
+  right: 22%;
+  width: 180px;
+  height: 180px;
+  margin-top: -90px;
+  margin-left: -90px;
+  animation: ripplePulse 13s infinite cubic-bezier(0.2, 0.8, 0.4, 1) 4s;
+}
+
+.ripple-3 {
+  top: 42%;
+  left: 50%;
+  width: 160px;
+  height: 160px;
+  margin-top: -80px;
+  margin-left: -80px;
+  animation: ripplePulse 15s infinite cubic-bezier(0.2, 0.8, 0.4, 1) 8s;
+}
+
+@keyframes ripplePulse {
+  0% {
+    transform: scale(0.1);
+    opacity: 0.65;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(4.2);
+    opacity: 0;
+  }
+}
+
+/* Rising Aquatic Bubbles */
+.water-bubble {
+  position: absolute;
+  bottom: -50px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.75) 0%, rgba(56, 189, 248, 0.3) 45%, rgba(14, 165, 233, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.45), 0 0 12px rgba(56, 189, 248, 0.25);
+  will-change: transform, opacity;
+}
+
+.bubble-1 { left: 10%; width: 22px; height: 22px; animation: riseBubble 13s infinite ease-in 0s; }
+.bubble-2 { left: 24%; width: 14px; height: 14px; animation: riseBubble 16s infinite ease-in 2s; }
+.bubble-3 { left: 38%; width: 28px; height: 28px; animation: riseBubble 11s infinite ease-in 4.5s; }
+.bubble-4 { left: 52%; width: 16px; height: 16px; animation: riseBubble 18s infinite ease-in 1s; }
+.bubble-5 { left: 66%; width: 20px; height: 20px; animation: riseBubble 14s infinite ease-in 3.5s; }
+.bubble-6 { left: 78%; width: 32px; height: 32px; animation: riseBubble 10s infinite ease-in 6s; }
+.bubble-7 { left: 88%; width: 18px; height: 18px; animation: riseBubble 15s infinite ease-in 2.5s; }
+.bubble-8 { left: 95%; width: 12px; height: 12px; animation: riseBubble 17s infinite ease-in 5s; }
+
+@keyframes riseBubble {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.65;
+  }
+  50% {
+    transform: translateY(-55vh) translateX(24px);
+    opacity: 0.75;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-115vh) translateX(-18px);
+    opacity: 0;
+  }
 }
