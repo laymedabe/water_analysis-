@@ -1,12 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import dynamic from 'next/dynamic';
-
-const VegetationMap = dynamic(() => import('../components/VegetationMap'), { 
-  ssr: false,
-  loading: () => <div style={{height: '600px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(30, 41, 59, 0.4)', borderRadius: '12px'}}>Loading Map...</div>
-});
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -209,13 +203,6 @@ export default function Home() {
         </section>
       </main>
 
-      <section className="glass-panel" style={{ marginTop: '2rem' }}>
-        <h2>Environmental Factors Mapping</h2>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-          Explore vegetation and tree species that influence the water catchment area.
-        </p>
-        <VegetationMap />
-      </section>
     </div>
   );
 }
