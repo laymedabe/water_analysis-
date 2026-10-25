@@ -1,0 +1,6 @@
+Metric,Value
+Records,130.0
+Classes present,1.0
+Accuracy,0.9923076923076923
+Weighted F1,0.9961389961389961
+Macro F1 (classes present),0.9961389961389961

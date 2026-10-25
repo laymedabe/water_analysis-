@@ -1,0 +1,7 @@
+,Historical,Synthetic,Combined,Training,Holdout
+Excellent,0,31,31,25,6
+Good,0,29,29,23,6
+Fair,8,16,24,19,5
+Poor,8,14,22,18,4
+High Risk,649,0,649,519,130
+Total,665,90,755,604,151

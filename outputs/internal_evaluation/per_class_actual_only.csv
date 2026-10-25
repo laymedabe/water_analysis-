@@ -1,0 +1,6 @@
+Class,Precision,Recall,F1,Support
+Excellent,0.0,0.0,0.0,0
+Good,0.0,0.0,0.0,0
+Fair,0.0,0.0,0.0,0
+Poor,0.0,0.0,0.0,0
+High Risk,1.0,0.9923076923076923,0.9961389961389961,130
